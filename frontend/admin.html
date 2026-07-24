@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CARA - Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 60px auto;
+            width: 90%;
+            flex-wrap: wrap;
+        }
+
+
+        .dashboard-card {
+            background: white;
+
+            padding: 40px;
+
+            width: 280px;
+            min-height: 170px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.1);
+
+            transition: 0.3s;
+        }
+
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .dashboard-card i {
+            font-size: 32px;
+
+            color: #088178;
+
+            margin-bottom: 15px;
+        }
+
+
+        .dashboard-card h3 {
+            margin-bottom: 15px;
+        }
+
+
+        .dashboard-card h2 {
+            color: #088178;
+        }
+
+
+        .admin-section {
+            width: 90%;
+
+            margin: 20px auto 70px auto;
+
+            text-align: center;
+        }
+
+
+        .admin-section h2 {
+            margin-bottom: 25px;
+        }
+
+
+        .admin-actions {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .admin-action-btn {
+            display: inline-block;
+
+            background: #088178;
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 5px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+
+        .admin-action-btn:hover {
+            background: #066b64;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .dashboard-card {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <section id="header">
+
+        <a href="index.html">
+
+            <img
+                src="Images/logo.png"
+                class="logo"
+                alt="CARA Logo"
+            >
+
+        </a>
+
+
+        <div>
+
+            <ul id="navbar">
+
+                <li>
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="shop.html">
+                        Shop
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="blog.html">
+                        Blog
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="orders.html">
+                        Orders
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        class="active"
+                        href="admin.html"
+                    >
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <li id="lg-bag">
+
+                    <a href="cart.html">
+
+                        <i
+                            class="far fa-shopping-bag"
+                        ></i>
+
+                    </a>
+
+                </li>
+
+
+                <a
+                    href="#"
+                    id="close"
+                >
+
+                    <i
+                        class="far fa-times"
+                    ></i>
+
+                </a>
+
+            </ul>
+
+        </div>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <div id="mobile">
+
+            <a href="cart.html">
+
+                <i
+                    class="far fa-shopping-bag"
+                ></i>
+
+            </a>
+
+
+            <i
+                id="bar"
+                class="fas fa-outdent"
+            ></i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <section
+        id="page-header"
+        class="about-header"
+    >
+
+        <h2>
+            #admin_dashboard
+        </h2>
+
+        <p>
+            Store Overview & Management
+        </p>
+
+    </section>
+
+
+
+    <!-- ========================================
+         DASHBOARD STATISTICS
+    ======================================== -->
+
+    <section>
+
+        <div class="dashboard-container">
+
+
+            <!-- TOTAL PRODUCTS -->
+
+            <div class="dashboard-card">
+
+                <i class="fas fa-tshirt"></i>
+
+
+                <h3>
+                    Total Products
+                </h3>
+
+
+                <h2 id="products">
+                    --
+                </h2>
+
+            </div>
+
+
+
+            <!-- TOTAL ORDERS -->
+
+            <div class="dashboard-card">
+
+                <i class="fas fa-shopping-bag"></i>
+
+
+                <h3>
+                    Total Orders
+                </h3>
+
+
+                <h2 id="orders">
+                    --
+                </h2>
+
+            </div>
+
+
+
+            <!-- TOTAL REVENUE -->
+
+            <div class="dashboard-card">
+
+                <i class="fas fa-dollar-sign"></i>
+
+
+                <h3>
+                    Total Revenue
+                </h3>
+
+
+                <h2 id="revenue">
+                    $--
+                </h2>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         STORE MANAGEMENT
+    ======================================== -->
+
+    <section class="admin-section">
+
+        <h2>
+            Store Management
+        </h2>
+
+
+        <div class="admin-actions">
+
+
+            <!-- VIEW PRODUCTS -->
+
+            <a
+                href="shop.html"
+                class="admin-action-btn"
+            >
+
+                View Products
+
+            </a>
+
+
+
+            <!-- MANAGE PRODUCTS -->
+
+            <a
+                href="manage-products.html"
+                class="admin-action-btn"
+            >
+
+                Manage Products
+
+            </a>
+
+
+
+            <!-- MANAGE ORDERS -->
+
+            <a
+                href="manage-orders.html"
+                class="admin-action-btn"
+            >
+
+                Manage Orders
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        const ADMIN_API_URL =
+            "http://localhost:5000/api/admin";
+
+
+        // ========================================
+        // GET JWT
+        // ========================================
+
+        const token =
+            localStorage.getItem(
+                "token"
+            );
+
+
+
+        // ========================================
+        // REQUIRE LOGIN
+        // ========================================
+
+        if (!token) {
+
+            alert(
+                "Please login to access the dashboard."
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+
+        // ========================================
+        // LOAD DASHBOARD
+        // ========================================
+
+        async function loadDashboard() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${ADMIN_API_URL}/dashboard`,
+                        {
+
+                            method: "GET",
+
+
+                            headers: {
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            }
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+
+                // ========================================
+                // TOKEN INVALID / EXPIRED
+                // ========================================
+
+                if (response.status === 401) {
+
+                    clearLogin();
+
+
+                    alert(
+                        "Your login session has expired. Please login again."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                    return;
+
+                }
+
+
+
+                // ========================================
+                // LOGGED IN BUT NOT ADMIN
+                // ========================================
+
+                if (response.status === 403) {
+
+                    alert(
+                        "Access denied. Admin only."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+
+                    return;
+
+                }
+
+
+
+                // ========================================
+                // OTHER ERROR
+                // ========================================
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load dashboard"
+                    );
+
+                }
+
+
+
+                // ========================================
+                // DISPLAY DASHBOARD DATA
+                // ========================================
+
+                document
+                    .getElementById(
+                        "products"
+                    )
+                    .textContent =
+                        data.totalProducts;
+
+
+                document
+                    .getElementById(
+                        "orders"
+                    )
+                    .textContent =
+                        data.totalOrders;
+
+
+                document
+                    .getElementById(
+                        "revenue"
+                    )
+                    .textContent =
+                        `$${Number(
+                            data.totalRevenue
+                        ).toFixed(2)}`;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Dashboard error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to load dashboard."
+                );
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // CLEAR LOGIN DATA
+        // ========================================
+
+        function clearLogin() {
+
+            localStorage.removeItem(
+                "token"
+            );
+
+
+            localStorage.removeItem(
+                "user"
+            );
+
+
+            localStorage.removeItem(
+                "userName"
+            );
+
+        }
+
+
+
+        // ========================================
+        // START DASHBOARD
+        // ========================================
+
+        loadDashboard();
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

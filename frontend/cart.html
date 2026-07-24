@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CARA - Cart</title>
+
+    <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .cart-message {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+        }
+
+        #cart-items input {
+            width: 70px;
+        }
+
+        .product-size {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+            color: #606063;
+        }
+
+        .remove-cart-item {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #checkoutBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <section id="header">
+
+        <a href="index.html">
+            <img
+                src="Images/logo.png"
+                class="logo"
+                alt="CARA Logo"
+            >
+        </a>
+
+        <div>
+
+            <ul id="navbar">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+                <li>
+                    <a href="blog.html">
+                        Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="orders.html">
+                        Orders
+                    </a>
+                </li>
+
+                <li>
+                    <a href="admin.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li id="lg-bag">
+
+                    <a
+                        class="active"
+                        href="cart.html"
+                    >
+                        <i class="far fa-shopping-bag"></i>
+                    </a>
+
+                </li>
+
+                <a href="#" id="close">
+                    <i class="far fa-times"></i>
+                </a>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+
+        <div id="mobile">
+
+            <a href="cart.html">
+                <i class="far fa-shopping-bag"></i>
+            </a>
+
+            <i
+                id="bar"
+                class="fas fa-outdent"
+            ></i>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         CART BANNER
+    ======================================== -->
+
+    <section
+        id="page-header"
+        class="about-header"
+    >
+
+        <h2>#your_cart</h2>
+
+        <p>
+            Review your items before checkout
+        </p>
+
+    </section>
+
+
+    <!-- ========================================
+         CART TABLE
+    ======================================== -->
+
+    <section
+        id="cart"
+        class="section-p1"
+    >
+
+        <table width="100%">
+
+            <thead>
+
+                <tr>
+
+                    <td>Remove</td>
+
+                    <td>Image</td>
+
+                    <td>Product</td>
+
+                    <td>Price</td>
+
+                    <td>Quantity</td>
+
+                    <td>Subtotal</td>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="cart-items">
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="cart-message"
+                    >
+                        Loading cart...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- ========================================
+         CART TOTALS
+    ======================================== -->
+
+    <section
+        id="cart-add"
+        class="section-p1"
+    >
+
+        <div id="coupon">
+
+            <h3>Apply Coupon</h3>
+
+            <div>
+
+                <input
+                    type="text"
+                    placeholder="Enter your Coupon"
+                >
+
+                <button
+                    class="normal"
+                    type="button"
+                >
+                    Apply
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div id="sub-total">
+
+            <h3>Cart Totals</h3>
+
+            <table>
+
+                <tr>
+
+                    <td>
+                        Cart Subtotal
+                    </td>
+
+                    <td id="cart-subtotal">
+                        $0.00
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <strong>Total</strong>
+                    </td>
+
+                    <td>
+                        <strong id="cart-total">
+                            $0.00
+                        </strong>
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+            <button
+                class="normal"
+                id="checkoutBtn"
+                type="button"
+            >
+                Proceed to checkout
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer class="section-p1">
+
+        <div class="col">
+
+            <img
+                class="logo"
+                src="Images/logo.png"
+                alt="CARA Logo"
+            >
+
+            <h4>Contact</h4>
+
+            <div class="contact-info">
+
+                <p>
+                    <strong>Address:</strong>
+                    562 Wellington Road, Street 32, San Francisco
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    +01 2222 365 / (+91) 01 2345 6789
+                </p>
+
+                <p>
+                    <strong>Hours:</strong>
+                    10:00-18:00, Mon-Sat
+                </p>
+
+            </div>
+
+
+            <div class="follow">
+
+                <h4>Follow Us</h4>
+
+                <div class="icon">
+
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col">
+
+            <h4>About</h4>
+
+            <a href="about.html">
+                About us
+            </a>
+
+            <a href="#">
+                Delivery Information
+            </a>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Terms & Conditions
+            </a>
+
+            <a href="contact.html">
+                Contact Us
+            </a>
+
+        </div>
+
+
+        <div class="col">
+
+            <h4>My Account</h4>
+
+            <a href="login.html">
+                Sign In
+            </a>
+
+            <a href="cart.html">
+                View Cart
+            </a>
+
+            <a href="#">
+                My Wishlist
+            </a>
+
+            <a href="orders.html">
+                Track My Order
+            </a>
+
+            <a href="#">
+                Help
+            </a>
+
+        </div>
+
+
+        <div class="col install">
+
+            <h4>Install App</h4>
+
+            <p>
+                From App Store or Google Play
+            </p>
+
+            <div class="row">
+
+                <img
+                    src="Images/application.jpg"
+                    alt="App Store"
+                >
+
+                <img
+                    src="Images/play.jpg"
+                    alt="Google Play"
+                >
+
+            </div>
+
+            <p>
+                Secured Payment Gateways
+            </p>
+
+            <img
+                src="Images/pay.png"
+                alt="Payment Methods"
+            >
+
+        </div>
+
+
+        <div class="copyright">
+
+            <p>Ecommerce</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ========================================
+         CART API FUNCTIONS
+    ======================================== -->
+
+    <script src="js/cart.js"></script>
+
+
+    <!-- ========================================
+         CART PAGE LOGIC
+    ======================================== -->
+
+    <script>
+
+        let currentCart = null;
+
+
+        // ========================================
+        // LOAD CART
+        // ========================================
+
+        async function loadCart() {
+
+            const token =
+                getAuthToken();
+
+
+            if (!token) {
+
+                alert(
+                    "Please login to view your cart."
+                );
+
+                window.location.href =
+                    "login.html";
+
+                return;
+            }
+
+
+            try {
+
+                const response = await fetch(
+                    CART_API_URL,
+                    {
+                        method: "GET",
+
+                        headers: {
+
+                            "Authorization":
+                                `Bearer ${token}`
+
+                        }
+                    }
+                );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.status === 401) {
+
+                    localStorage.removeItem(
+                        "token"
+                    );
+
+                    localStorage.removeItem(
+                        "user"
+                    );
+
+                    localStorage.removeItem(
+                        "userName"
+                    );
+
+
+                    alert(
+                        "Your login session has expired. Please login again."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load cart"
+                    );
+
+                }
+
+
+                currentCart = data;
+
+
+                displayCart(data);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Load cart error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "cart-items"
+                ).innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="cart-message"
+                        >
+                            Unable to load cart.
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // DISPLAY CART
+        // ========================================
+
+        function displayCart(cart) {
+
+            const cartContainer =
+                document.getElementById(
+                    "cart-items"
+                );
+
+
+            const items =
+                cart.items || [];
+
+
+            if (items.length === 0) {
+
+                cartContainer.innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="cart-message"
+                        >
+
+                            Your cart is empty.
+
+                            <br><br>
+
+                            <a href="shop.html">
+                                Continue Shopping
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+
+                updateCartTotals(0);
+
+                return;
+            }
+
+
+            cartContainer.innerHTML = "";
+
+
+            let total = 0;
+
+
+            items.forEach((item) => {
+
+                const product =
+                    item.product;
+
+
+                if (!product) {
+                    return;
+                }
+
+
+                const price =
+                    Number(product.price);
+
+
+                const quantity =
+                    Number(item.quantity);
+
+
+                const subtotal =
+                    price * quantity;
+
+
+                total += subtotal;
+
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML = `
+
+                    <td>
+
+                        <button
+                            type="button"
+                            class="remove-cart-item"
+                            aria-label="Remove product"
+                        >
+
+                            <i
+                                class="far fa-times-circle"
+                            ></i>
+
+                        </button>
+
+                    </td>
+
+
+                    <td>
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                        >
+
+                    </td>
+
+
+                    <td>
+
+                        ${product.name}
+
+                        <span class="product-size">
+
+                            Size:
+                            ${item.size || "N/A"}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        $${price.toFixed(2)}
+
+                    </td>
+
+
+                    <td>
+
+                        <input
+                            type="number"
+                            class="cart-quantity"
+                            min="1"
+                            max="${product.stock}"
+                            value="${quantity}"
+                        >
+
+                    </td>
+
+
+                    <td>
+
+                        $${subtotal.toFixed(2)}
+
+                    </td>
+
+                `;
+
+
+                // ========================================
+                // REMOVE BUTTON
+                // ========================================
+
+                row
+                    .querySelector(
+                        ".remove-cart-item"
+                    )
+                    .addEventListener(
+                        "click",
+                        function () {
+
+                            removeCartItem(
+                                product._id,
+                                item.size
+                            );
+
+                        }
+                    );
+
+
+                // ========================================
+                // QUANTITY CHANGE
+                // ========================================
+
+                row
+                    .querySelector(
+                        ".cart-quantity"
+                    )
+                    .addEventListener(
+                        "change",
+                        function () {
+
+                            updateCartQuantity(
+                                product._id,
+                                item.size,
+                                this.value
+                            );
+
+                        }
+                    );
+
+
+                cartContainer.appendChild(
+                    row
+                );
+
+            });
+
+
+            updateCartTotals(total);
+
+        }
+
+
+
+        // ========================================
+        // UPDATE CART TOTALS
+        // ========================================
+
+        function updateCartTotals(total) {
+
+            document.getElementById(
+                "cart-subtotal"
+            ).textContent =
+                `$${Number(total).toFixed(2)}`;
+
+
+            document.getElementById(
+                "cart-total"
+            ).textContent =
+                `$${Number(total).toFixed(2)}`;
+
+        }
+
+
+
+        // ========================================
+        // UPDATE QUANTITY
+        // ========================================
+
+        async function updateCartQuantity(
+            productId,
+            size,
+            quantity
+        ) {
+
+            const token =
+                getAuthToken();
+
+
+            const parsedQuantity =
+                Number(quantity);
+
+
+            if (
+                !Number.isInteger(
+                    parsedQuantity
+                ) ||
+                parsedQuantity < 1
+            ) {
+
+                alert(
+                    "Quantity must be at least 1."
+                );
+
+
+                loadCart();
+
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${CART_API_URL}/update`,
+                        {
+
+                            method: "PUT",
+
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            },
+
+
+                            body: JSON.stringify({
+
+                                productId,
+
+                                quantity:
+                                    parsedQuantity,
+
+                                size
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.status === 401) {
+
+                    localStorage.removeItem(
+                        "token"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    alert(
+                        data.message ||
+                        "Unable to update quantity."
+                    );
+
+
+                    loadCart();
+
+                    return;
+                }
+
+
+                currentCart =
+                    data.cart;
+
+
+                displayCart(
+                    data.cart
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Update cart error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to update cart."
+                );
+
+
+                loadCart();
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // REMOVE CART ITEM
+        // ========================================
+
+        async function removeCartItem(
+            productId,
+            size
+        ) {
+
+            const token =
+                getAuthToken();
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${CART_API_URL}/remove`,
+                        {
+
+                            method: "DELETE",
+
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            },
+
+
+                            body: JSON.stringify({
+
+                                productId,
+
+                                size
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.status === 401) {
+
+                    localStorage.removeItem(
+                        "token"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    alert(
+                        data.message ||
+                        "Unable to remove product."
+                    );
+
+                    return;
+                }
+
+
+                currentCart =
+                    data.cart;
+
+
+                displayCart(
+                    data.cart
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Remove cart error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to remove product from cart."
+                );
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // CHECKOUT
+        // ========================================
+
+        document
+            .getElementById(
+                "checkoutBtn"
+            )
+            .addEventListener(
+                "click",
+                async function () {
+
+                    // Check cart
+                    if (
+                        !currentCart ||
+                        !currentCart.items ||
+                        currentCart.items.length === 0
+                    ) {
+
+                        alert(
+                            "Your cart is empty."
+                        );
+
+                        return;
+                    }
+
+
+                    const token =
+                        getAuthToken();
+
+
+                    if (!token) {
+
+                        alert(
+                            "Please login before checkout."
+                        );
+
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+                    }
+
+
+                    const checkoutButton =
+                        document.getElementById(
+                            "checkoutBtn"
+                        );
+
+
+                    try {
+
+                        // Prevent double click
+                        checkoutButton.disabled =
+                            true;
+
+
+                        checkoutButton.innerText =
+                            "Placing Order...";
+
+
+                        const response =
+                            await fetch(
+                                "http://localhost:5000/api/orders/checkout",
+                                {
+
+                                    method: "POST",
+
+
+                                    headers: {
+
+                                        "Authorization":
+                                            `Bearer ${token}`
+
+                                    }
+
+                                }
+                            );
+
+
+                        const data =
+                            await response.json();
+
+
+                        // ========================================
+                        // AUTH ERROR
+                        // ========================================
+
+                        if (
+                            response.status === 401
+                        ) {
+
+                            localStorage.removeItem(
+                                "token"
+                            );
+
+                            localStorage.removeItem(
+                                "user"
+                            );
+
+                            localStorage.removeItem(
+                                "userName"
+                            );
+
+
+                            alert(
+                                "Your login session has expired. Please login again."
+                            );
+
+
+                            window.location.href =
+                                "login.html";
+
+                            return;
+                        }
+
+
+                        // ========================================
+                        // CHECKOUT ERROR
+                        // ========================================
+
+                        if (!response.ok) {
+
+                            alert(
+                                data.message ||
+                                "Unable to place order."
+                            );
+
+                            return;
+                        }
+
+
+                        // ========================================
+                        // SUCCESS
+                        // ========================================
+
+                        alert(
+                            "Order placed successfully!"
+                        );
+
+
+                        window.location.href =
+                            "orders.html";
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Checkout error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to place order. Please try again."
+                        );
+
+
+                    } finally {
+
+                        checkoutButton.disabled =
+                            false;
+
+
+                        checkoutButton.innerText =
+                            "Proceed to checkout";
+
+                    }
+
+                }
+            );
+
+
+
+        // ========================================
+        // LOAD CART WHEN PAGE OPENS
+        // ========================================
+
+        loadCart();
+
+    </script>
+
+
+    <!-- Existing CARA JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

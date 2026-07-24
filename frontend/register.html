@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Register - CARA</title>
+
+    <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .auth-container {
+
+            width: 400px;
+            max-width: 90%;
+
+            margin: 80px auto;
+
+            padding: 40px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.1);
+
+            border-radius: 10px;
+
+            background: white;
+
+            box-sizing: border-box;
+        }
+
+
+        .auth-container h2 {
+
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .auth-container input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin: 10px 0;
+
+            border: 1px solid #cce7d0;
+
+            border-radius: 4px;
+
+            box-sizing: border-box;
+
+            font-size: 15px;
+        }
+
+
+        .auth-container button {
+
+            width: 100%;
+
+            background: #088178;
+
+            color: white;
+
+            border: none;
+
+            padding: 14px;
+
+            cursor: pointer;
+
+            border-radius: 4px;
+
+            font-size: 16px;
+
+            margin-top: 10px;
+        }
+
+
+        .auth-container button:hover {
+
+            background: #066c65;
+        }
+
+
+        .login-text {
+
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+
+        .login-text a {
+
+            color: #088178;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        .login-text a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        #register-message {
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <section
+        id="page-header"
+        class="about-header"
+    >
+
+        <h2>#register</h2>
+
+        <p>Create a new account</p>
+
+    </section>
+
+
+
+    <!-- ========================================
+         REGISTER FORM
+    ======================================== -->
+
+    <div class="auth-container">
+
+        <h2>Create Account</h2>
+
+
+        <form id="register-form">
+
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Name"
+                required
+            >
+
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                minlength="6"
+                required
+            >
+
+
+            <button
+                type="submit"
+                id="register-button"
+            >
+                Register
+            </button>
+
+
+            <p id="register-message"></p>
+
+
+        </form>
+
+
+        <p class="login-text">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+
+
+    <script>
+
+        // ========================================
+        // REGISTER USER
+        // ========================================
+
+        const registerForm =
+            document.getElementById(
+                "register-form"
+            );
+
+
+        registerForm.addEventListener(
+            "submit",
+            registerUser
+        );
+
+
+
+        async function registerUser(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const message =
+                document.getElementById(
+                    "register-message"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "register-button"
+                );
+
+
+
+            // ========================================
+            // VALIDATION
+            // ========================================
+
+            if (
+                !name ||
+                !email ||
+                !password
+            ) {
+
+                message.style.color =
+                    "red";
+
+                message.textContent =
+                    "Please fill in all fields.";
+
+                return;
+            }
+
+
+
+            if (password.length < 6) {
+
+                message.style.color =
+                    "red";
+
+                message.textContent =
+                    "Password must be at least 6 characters.";
+
+                return;
+            }
+
+
+
+            // ========================================
+            // SEND REGISTRATION REQUEST
+            // ========================================
+
+            try {
+
+                button.disabled = true;
+
+                button.textContent =
+                    "Creating Account...";
+
+
+                message.textContent = "";
+
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/auth/register",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                name,
+                                email,
+                                password
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+
+                // ========================================
+                // REGISTRATION FAILED
+                // ========================================
+
+                if (!response.ok) {
+
+                    message.style.color =
+                        "red";
+
+
+                    message.textContent =
+                        data.message ||
+                        "Registration failed.";
+
+
+                    button.disabled = false;
+
+                    button.textContent =
+                        "Register";
+
+
+                    return;
+                }
+
+
+
+                // ========================================
+                // REGISTRATION SUCCESS
+                // ========================================
+
+                message.style.color =
+                    "green";
+
+
+                message.textContent =
+                    "Registration successful! Redirecting to login...";
+
+
+                alert(
+                    "Registration successful! Please login."
+                );
+
+
+                // Go to login page
+                window.location.href =
+                    "login.html";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Registration error:",
+                    error
+                );
+
+
+                message.style.color =
+                    "red";
+
+
+                message.textContent =
+                    "Unable to connect to the server.";
+
+
+                button.disabled = false;
+
+
+                button.textContent =
+                    "Register";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

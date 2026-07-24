@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CARA - Manage Orders</title>
+
+    <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .orders-admin-container {
+            width: 90%;
+            margin: 50px auto;
+        }
+
+        .back-dashboard {
+            display: inline-block;
+
+            margin-bottom: 30px;
+
+            color: #088178;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+        .orders-title {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .admin-order-card {
+            background: white;
+
+            border: 1px solid #e1e1e1;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        .order-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 20px;
+        }
+
+        .order-info p {
+            margin: 7px 0;
+        }
+
+        .order-total {
+            font-size: 20px;
+
+            font-weight: 600;
+
+            color: #088178;
+        }
+
+        .order-products {
+            margin-top: 20px;
+
+            border-top: 1px solid #ddd;
+
+            padding-top: 20px;
+        }
+
+        .order-product {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-product img {
+            width: 70px;
+
+            height: 70px;
+
+            object-fit: cover;
+
+            border-radius: 6px;
+        }
+
+        .product-details p {
+            margin: 4px 0;
+        }
+
+        .status-section {
+            margin-top: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .status-section select {
+            padding: 10px 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+        }
+
+        .status-section button {
+            border: none;
+
+            background: #088178;
+
+            color: white;
+
+            padding: 11px 18px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .status-section button:hover {
+            background: #066b64;
+        }
+
+        .status-section button:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+        }
+
+        .current-status {
+            font-weight: 600;
+
+            color: #088178;
+        }
+
+        .admin-message {
+            text-align: center;
+
+            padding: 40px;
+
+            font-size: 18px;
+        }
+
+        .order-id {
+            word-break: break-all;
+        }
+
+        @media (max-width: 600px) {
+
+            .orders-admin-container {
+                width: 95%;
+            }
+
+            .admin-order-card {
+                padding: 18px;
+            }
+
+            .order-product {
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <section id="header">
+
+        <a href="index.html">
+
+            <img
+                src="Images/logo.png"
+                class="logo"
+                alt="CARA Logo"
+            >
+
+        </a>
+
+
+        <div>
+
+            <ul id="navbar">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+                <li>
+                    <a href="blog.html">
+                        Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="orders.html">
+                        Orders
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="active"
+                        href="admin.html"
+                    >
+                        Dashboard
+                    </a>
+                </li>
+
+                <li id="lg-bag">
+
+                    <a href="cart.html">
+
+                        <i
+                            class="far fa-shopping-bag"
+                        ></i>
+
+                    </a>
+
+                </li>
+
+                <a
+                    href="#"
+                    id="close"
+                >
+
+                    <i
+                        class="far fa-times"
+                    ></i>
+
+                </a>
+
+            </ul>
+
+        </div>
+
+
+        <div id="mobile">
+
+            <a href="cart.html">
+
+                <i
+                    class="far fa-shopping-bag"
+                ></i>
+
+            </a>
+
+            <i
+                id="bar"
+                class="fas fa-outdent"
+            ></i>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <section
+        id="page-header"
+        class="about-header"
+    >
+
+        <h2>
+            #manage_orders
+        </h2>
+
+        <p>
+            View customer orders and update their status
+        </p>
+
+    </section>
+
+
+    <!-- ========================================
+         ORDERS
+    ======================================== -->
+
+    <main class="orders-admin-container">
+
+        <a
+            href="admin.html"
+            class="back-dashboard"
+        >
+            ← Back to Dashboard
+        </a>
+
+
+        <h2 class="orders-title">
+            Customer Orders
+        </h2>
+
+
+        <div id="ordersContainer">
+
+            <div class="admin-message">
+                Loading orders...
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        const ADMIN_API_URL =
+            "http://localhost:5000/api/admin";
+
+
+        const token =
+            localStorage.getItem("token");
+
+
+
+        // ========================================
+        // VERIFY ADMIN
+        // ========================================
+
+        async function verifyAdmin() {
+
+            if (!token) {
+
+                alert(
+                    "Please login to access order management."
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+
+                return false;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${ADMIN_API_URL}/dashboard`,
+                        {
+
+                            method: "GET",
+
+                            headers: {
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            }
+
+                        }
+                    );
+
+
+                if (response.status === 401) {
+
+                    clearLogin();
+
+
+                    alert(
+                        "Your login session has expired. Please login again."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                    return false;
+                }
+
+
+                if (response.status === 403) {
+
+                    alert(
+                        "Access denied. Admin only."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+
+                    return false;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to verify administrator"
+                    );
+
+                }
+
+
+                return true;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin verification error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to verify administrator."
+                );
+
+
+                return false;
+            }
+
+        }
+
+
+
+        // ========================================
+        // LOAD ALL ORDERS
+        // ========================================
+
+        async function loadOrders() {
+
+            const container =
+                document.getElementById(
+                    "ordersContainer"
+                );
+
+
+            container.innerHTML = `
+
+                <div class="admin-message">
+
+                    Loading orders...
+
+                </div>
+
+            `;
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${ADMIN_API_URL}/orders`,
+                        {
+
+                            method: "GET",
+
+                            headers: {
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            }
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.status === 401) {
+
+                    clearLogin();
+
+
+                    alert(
+                        "Your login session has expired. Please login again."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                    return;
+                }
+
+
+                if (response.status === 403) {
+
+                    alert(
+                        "Access denied. Admin only."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load orders"
+                    );
+
+                }
+
+
+                displayOrders(
+                    data.orders || []
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Load orders error:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+                    <div class="admin-message">
+
+                        Unable to load orders.
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // DISPLAY ORDERS
+        // ========================================
+
+        function displayOrders(orders) {
+
+            const container =
+                document.getElementById(
+                    "ordersContainer"
+                );
+
+
+            if (orders.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="admin-message">
+
+                        No orders found.
+
+                    </div>
+
+                `;
+
+
+                return;
+            }
+
+
+            container.innerHTML = "";
+
+
+            orders.forEach(
+                (order) => {
+
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "admin-order-card";
+
+
+                    const customerName =
+                        order.user?.name ||
+                        "Unknown User";
+
+
+                    const customerEmail =
+                        order.user?.email ||
+                        "Unavailable";
+
+
+                    const orderDate =
+                        order.createdAt
+
+                            ? new Date(
+                                order.createdAt
+                            ).toLocaleString()
+
+                            : "Unavailable";
+
+
+                    const productsHTML =
+                        (order.items || [])
+                            .map(
+                                item => `
+
+                                    <div class="order-product">
+
+                                        <img
+                                            src="${item.image}"
+                                            alt="${item.name}"
+                                        >
+
+
+                                        <div class="product-details">
+
+                                            <strong>
+                                                ${item.name}
+                                            </strong>
+
+
+                                            <p>
+                                                Price:
+                                                $${Number(
+                                                    item.price
+                                                ).toFixed(2)}
+                                            </p>
+
+
+                                            <p>
+                                                Quantity:
+                                                ${item.quantity}
+                                            </p>
+
+
+                                            <p>
+                                                Size:
+                                                ${item.size || "N/A"}
+                                            </p>
+
+
+                                            <p>
+                                                Subtotal:
+                                                $${(
+                                                    Number(item.price) *
+                                                    Number(item.quantity)
+                                                ).toFixed(2)}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                `
+                            )
+                            .join("");
+
+
+                    card.innerHTML = `
+
+                        <div class="order-top">
+
+                            <div class="order-info">
+
+                                <h3>
+                                    ${customerName}
+                                </h3>
+
+
+                                <p>
+                                    <strong>Email:</strong>
+                                    ${customerEmail}
+                                </p>
+
+
+                                <p class="order-id">
+
+                                    <strong>Order ID:</strong>
+                                    ${order._id}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>Order Date:</strong>
+                                    ${orderDate}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Current Status:
+                                    </strong>
+
+                                    <span class="current-status">
+
+                                        ${order.status}
+
+                                    </span>
+
+                                </p>
+
+                            </div>
+
+
+                            <div class="order-total">
+
+                                Total:
+                                $${Number(
+                                    order.totalAmount
+                                ).toFixed(2)}
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="order-products">
+
+                            <h4>
+                                Products
+                            </h4>
+
+                            ${productsHTML}
+
+                        </div>
+
+
+                        <div class="status-section">
+
+                            <label>
+
+                                <strong>
+                                    Change Status:
+                                </strong>
+
+                            </label>
+
+
+                            <select class="status-select">
+
+                                ${createStatusOptions(
+                                    order.status
+                                )}
+
+                            </select>
+
+
+                            <button
+                                type="button"
+                                class="update-status-btn"
+                            >
+                                Update Status
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                    const select =
+                        card.querySelector(
+                            ".status-select"
+                        );
+
+
+                    const button =
+                        card.querySelector(
+                            ".update-status-btn"
+                        );
+
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            updateOrderStatus(
+                                order._id,
+                                select.value,
+                                button
+                            );
+
+                        }
+                    );
+
+
+                    container.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // ========================================
+        // STATUS OPTIONS
+        // ========================================
+
+        function createStatusOptions(
+            currentStatus
+        ) {
+
+            const statuses = [
+
+                "Placed",
+
+                "Processing",
+
+                "Shipped",
+
+                "Delivered",
+
+                "Cancelled"
+
+            ];
+
+
+            return statuses
+                .map(
+                    status => `
+
+                        <option
+                            value="${status}"
+                            ${
+                                status === currentStatus
+                                    ? "selected"
+                                    : ""
+                            }
+                        >
+
+                            ${status}
+
+                        </option>
+
+                    `
+                )
+                .join("");
+
+        }
+
+
+
+        // ========================================
+        // UPDATE ORDER STATUS
+        // ========================================
+
+        async function updateOrderStatus(
+            orderId,
+            status,
+            button
+        ) {
+
+            try {
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "Updating...";
+
+
+                const response =
+                    await fetch(
+                        `${ADMIN_API_URL}/orders/${orderId}/status`,
+                        {
+
+                            method: "PUT",
+
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            },
+
+
+                            body:
+                                JSON.stringify({
+                                    status
+                                })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.status === 401) {
+
+                    clearLogin();
+
+
+                    alert(
+                        "Your login session has expired. Please login again."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                    return;
+                }
+
+
+                if (response.status === 403) {
+
+                    alert(
+                        "Access denied. Admin only."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    alert(
+                        data.message ||
+                        "Unable to update order status."
+                    );
+
+
+                    return;
+                }
+
+
+                alert(
+                    "Order status updated successfully!"
+                );
+
+
+                await loadOrders();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Update status error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to update order status."
+                );
+
+
+            } finally {
+
+                button.disabled =
+                    false;
+
+
+                button.textContent =
+                    "Update Status";
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // CLEAR LOGIN
+        // ========================================
+
+        function clearLogin() {
+
+            localStorage.removeItem(
+                "token"
+            );
+
+
+            localStorage.removeItem(
+                "user"
+            );
+
+
+            localStorage.removeItem(
+                "userName"
+            );
+
+        }
+
+
+
+        // ========================================
+        // START PAGE
+        // ========================================
+
+        async function startPage() {
+
+            const isAdmin =
+                await verifyAdmin();
+
+
+            if (!isAdmin) {
+                return;
+            }
+
+
+            await loadOrders();
+
+        }
+
+
+        startPage();
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

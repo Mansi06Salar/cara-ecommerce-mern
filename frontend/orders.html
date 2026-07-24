@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CARA - My Orders</title>
+
+    <link rel="stylesheet"
+          href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+
+    <style>
+
+        #orders-container {
+            width: 80%;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+
+        .order-card {
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.05);
+        }
+
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            border-bottom: 1px solid #e1e1e1;
+
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+
+        .order-header h3 {
+            margin-bottom: 5px;
+        }
+
+
+        .order-date {
+            color: #606063;
+            font-size: 14px;
+        }
+
+
+        .order-status {
+            background: #e8f6ea;
+            color: #088178;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            font-weight: 600;
+        }
+
+
+        .order-product {
+            display: flex;
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+
+        .order-product img {
+            width: 90px;
+            height: 90px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+        }
+
+
+        .order-product-info h4 {
+            margin-bottom: 8px;
+        }
+
+
+        .order-product-info p {
+            margin: 4px 0;
+            color: #606063;
+        }
+
+
+        .order-total {
+            text-align: right;
+
+            margin-top: 20px;
+
+            font-size: 18px;
+        }
+
+
+        .orders-message {
+            text-align: center;
+
+            padding: 50px;
+
+            font-size: 18px;
+        }
+
+
+        @media (max-width: 600px) {
+
+            #orders-container {
+                width: 90%;
+            }
+
+
+            .order-product {
+                align-items: flex-start;
+            }
+
+
+            .order-product img {
+                width: 70px;
+                height: 70px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <section id="header">
+
+        <a href="index.html">
+
+            <img
+                src="Images/logo.png"
+                class="logo"
+                alt="CARA Logo">
+
+        </a>
+
+
+        <div>
+
+            <ul id="navbar">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="blog.html">
+                        Blog
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+
+                <li>
+
+                    <a
+                        class="active"
+                        href="orders.html">
+
+                        Orders
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="admin.html">
+                        Dashboard
+                    </a>
+
+                </li>
+
+
+                <li id="lg-bag">
+
+                    <a href="cart.html">
+
+                        <i class="far fa-shopping-bag"></i>
+
+                    </a>
+
+                </li>
+
+
+                <a href="#" id="close">
+
+                    <i class="far fa-times"></i>
+
+                </a>
+
+            </ul>
+
+        </div>
+
+
+        <div id="mobile">
+
+            <a href="cart.html">
+
+                <i class="far fa-shopping-bag"></i>
+
+            </a>
+
+
+            <i
+                id="bar"
+                class="fas fa-outdent">
+            </i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <section
+        id="page-header"
+        class="about-header">
+
+        <h2>
+            #my_orders
+        </h2>
+
+        <p>
+            View all orders placed from your account
+        </p>
+
+    </section>
+
+
+
+    <!-- ========================================
+         ORDERS
+    ======================================== -->
+
+    <section>
+
+        <div id="orders-container">
+
+            <div class="orders-message">
+                Loading your orders...
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        const ORDER_API_URL =
+            "http://localhost:5000/api/orders";
+
+
+        // ========================================
+        // LOAD USER ORDERS
+        // ========================================
+
+        async function loadOrders() {
+
+            const token =
+                localStorage.getItem("token");
+
+
+            // User not logged in
+            if (!token) {
+
+                alert(
+                    "Please login to view your orders."
+                );
+
+                window.location.href =
+                    "login.html";
+
+                return;
+            }
+
+
+            const container =
+                document.getElementById(
+                    "orders-container"
+                );
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        ORDER_API_URL,
+                        {
+                            method: "GET",
+
+                            headers: {
+
+                                "Authorization":
+                                    `Bearer ${token}`
+
+                            }
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                // Token expired / invalid
+                if (response.status === 401) {
+
+                    localStorage.removeItem(
+                        "token"
+                    );
+
+                    localStorage.removeItem(
+                        "user"
+                    );
+
+                    alert(
+                        "Your login session has expired. Please login again."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load orders"
+                    );
+
+                }
+
+
+                displayOrders(
+                    data.orders || []
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Load orders error:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+                    <div class="orders-message">
+
+                        Unable to load your orders.
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+
+        // ========================================
+        // DISPLAY ORDERS
+        // ========================================
+
+        function displayOrders(orders) {
+
+            const container =
+                document.getElementById(
+                    "orders-container"
+                );
+
+
+            // No orders
+            if (orders.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="orders-message">
+
+                        You haven't placed any orders yet.
+
+                        <br><br>
+
+                        <a href="shop.html">
+
+                            Continue Shopping
+
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML = "";
+
+
+            orders.forEach(
+                (order) => {
+
+
+                    const orderDate =
+                        new Date(
+                            order.createdAt
+                        ).toLocaleString();
+
+
+                    const shortOrderId =
+                        order._id
+                            ? order._id.slice(-8)
+                            : "N/A";
+
+
+                    let productsHTML = "";
+
+
+                    order.items.forEach(
+                        (item) => {
+
+
+                            const subtotal =
+                                Number(item.price) *
+                                Number(item.quantity);
+
+
+                            productsHTML += `
+
+                                <div class="order-product">
+
+
+                                    <img
+                                        src="${item.image}"
+                                        alt="${item.name}">
+
+
+                                    <div class="order-product-info">
+
+                                        <h4>
+                                            ${item.name}
+                                        </h4>
+
+
+                                        <p>
+                                            Price:
+                                            $${Number(item.price).toFixed(2)}
+                                        </p>
+
+
+                                        <p>
+                                            Quantity:
+                                            ${item.quantity}
+                                        </p>
+
+
+                                        <p>
+                                            Size:
+                                            ${item.size || "N/A"}
+                                        </p>
+
+
+                                        <p>
+                                            Subtotal:
+                                            $${subtotal.toFixed(2)}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    );
+
+
+                    container.innerHTML += `
+
+                        <div class="order-card">
+
+
+                            <div class="order-header">
+
+
+                                <div>
+
+                                    <h3>
+
+                                        Order #${shortOrderId}
+
+                                    </h3>
+
+
+                                    <div class="order-date">
+
+                                        ${orderDate}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="order-status">
+
+                                    ${order.status}
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div>
+
+                                ${productsHTML}
+
+                            </div>
+
+
+                            <div class="order-total">
+
+                                <strong>
+
+                                    Order Total:
+                                    $${Number(
+                                        order.totalAmount
+                                    ).toFixed(2)}
+
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+        }
+
+
+
+        // Load orders when page opens
+        loadOrders();
+
+    </script>
+
+
+    <!-- Existing CARA JS -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CARA - Login</title>
+
+    <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+        .auth-container {
+            width: 400px;
+            max-width: calc(100% - 40px);
+
+            margin: 80px auto;
+            padding: 40px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+            border-radius: 10px;
+            background: white;
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .auth-container button {
+            width: 100%;
+
+            background: #088178;
+            color: white;
+
+            border: none;
+            padding: 14px;
+
+            cursor: pointer;
+            border-radius: 4px;
+
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .auth-container button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        #loginMessage {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #088178;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section
+        id="page-header"
+        class="about-header"
+    >
+        <h2>#login</h2>
+
+        <p>Access your account</p>
+    </section>
+
+
+    <div class="auth-container">
+
+        <h2>Login</h2>
+
+        <form id="loginForm">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                autocomplete="email"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button
+                type="submit"
+                class="normal"
+                id="loginButton"
+            >
+                Login
+            </button>
+
+        </form>
+
+        <p id="loginMessage"></p>
+
+        <p class="register-link">
+            Don't have an account?
+            <a href="register.html">Register</a>
+        </p>
+
+    </div>
+
+
+    <script>
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const loginButton =
+            document.getElementById("loginButton");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+
+        loginForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+                loginMessage.textContent = "";
+
+                loginButton.disabled = true;
+                loginButton.textContent = "Logging in...";
+
+                try {
+
+                    const response = await fetch(
+                        "http://localhost:5000/api/auth/login",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                email,
+                                password
+                            })
+                        }
+                    );
+
+
+                    const data = await response.json();
+
+
+                    if (!response.ok) {
+
+                        loginMessage.textContent =
+                            data.message || "Login failed";
+
+                        return;
+                    }
+
+
+                    // Store authentication information
+                    localStorage.setItem(
+                        "token",
+                        data.token
+                    );
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify(data.user)
+                    );
+
+
+                    loginMessage.textContent =
+                        "Login successful!";
+
+
+                    // Redirect to home page
+                    window.location.href =
+                        "index.html";
+
+                } catch (error) {
+
+                    console.error(
+                        "Login error:",
+                        error
+                    );
+
+                    loginMessage.textContent =
+                        "Unable to connect to the server.";
+
+                } finally {
+
+                    loginButton.disabled = false;
+                    loginButton.textContent = "Login";
+
+                }
+            }
+        );
+    </script>
+
+</body>
+</html>
