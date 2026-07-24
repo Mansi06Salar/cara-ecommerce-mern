@@ -302,17 +302,43 @@ Keep the backend terminal running while using the application.
 
 ---
 
-Customer:
-1. Register using any new email and password.
-2. Login using the same email and password.
+## 7. Create and Login as a Customer
 
-Admin:
-1. Register an account normally.
-2. From the backend directory run:
-   npm run make-admin -- registered-email@example.com
-3. Login using the same email and password used during registration.
-4. The Dashboard option will become available.
+1. Open the **Register** page.
+2. Register using any new name, email, and password.
+3. After registration, open the **Login** page.
+4. Login using the same email and password used during registration.
+5. The account will have the default `user` role.
 
+The customer can now browse products, manage the cart, place orders, and view order history.
+
+---
+
+## 8. Create an Admin Account
+
+There are no predefined admin credentials.
+
+First, register a new account normally through the CARA Register page.
+
+Then, from the `backend` directory, run:
+
+```bash
+npm run make-admin -- registered-email@example.com
+```
+
+For example:
+
+```bash
+npm run make-admin -- admin@example.com
+```
+
+Use the same email address that was used during registration.
+
+After the command confirms that the account is now an admin, login using the **same email and password originally used during registration**.
+
+The **Dashboard** option will then become available in the navigation bar.
+
+> Running `make-admin` changes the account's role to `admin`. It does not change the account's password.
 ---
 
 # Application Flow
