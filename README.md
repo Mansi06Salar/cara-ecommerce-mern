@@ -306,21 +306,22 @@ Keep the backend terminal running while using the application.
 
 1. Open the **Register** page.
 2. Register using any new name, email, and password.
-3. After registration, open the **Login** page.
+3. After registration, go to the **Login** page.
 4. Login using the same email and password used during registration.
-5. The account will have the default `user` role.
+5. The account is created with the default `user` role.
 
-The customer can now browse products, manage the cart, place orders, and view order history.
+The customer can now browse products, add products to the cart, place orders, and view order history.
 
 ---
 
-## 8. Create an Admin Account
+## 8. Create and Login as an Admin
 
-There are no predefined admin credentials.
+There are **no predefined admin credentials**.
 
-First, register a new account normally through the CARA Register page.
-
-Then, from the `backend` directory, run:
+1. Open the **Register** page and register a new account normally.
+2. Remember the email and password used during registration.
+3. Open a terminal in the `backend` directory.
+4. Run:
 
 ```bash
 npm run make-admin -- registered-email@example.com
@@ -332,14 +333,12 @@ For example:
 npm run make-admin -- admin@example.com
 ```
 
-Use the same email address that was used during registration.
+5. Use the **same email address that you registered with**.
+6. After the terminal confirms that the account is now an admin, go to the Login page.
+7. Login using the **same email and password used during registration**.
+8. The **Dashboard** option will now become available.
 
-After the command confirms that the account is now an admin, login using the **same email and password originally used during registration**.
-
-The **Dashboard** option will then become available in the navigation bar.
-
-> Running `make-admin` changes the account's role to `admin`. It does not change the account's password.
----
+> `make-admin` only changes the registered account's role from `user` to `admin`. It does not change the account's password.
 
 # Application Flow
 
