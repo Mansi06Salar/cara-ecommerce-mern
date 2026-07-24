@@ -162,13 +162,13 @@ VS Code is recommended but not required.
 ## 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Mansi06Salar/cara-ecommerce-mern.git
 ```
 
 Move into the project:
 
 ```bash
-cd cara-ecommerce-v2
+cd cara-ecommerce-mern
 ```
 
 ---
@@ -302,61 +302,16 @@ Keep the backend terminal running while using the application.
 
 ---
 
-# Creating a Customer Account
+Customer:
+1. Register using any new email and password.
+2. Login using the same email and password.
 
-Open the Register page from the website.
-
-Enter:
-
-- Name
-- Email
-- Password
-
-After registration, log in using the account you created.
-
-New accounts have the role:
-
-```text
-user
-```
-
-Customers can then use the Shop, Cart, Checkout, and Orders functionality.
-
----
-
-# Creating an Admin Account
-
-Admin access is not enabled for newly registered users by default.
-
-First, register an account through the CARA website.
-
-Then, from the `backend` directory, run:
-
-```bash
-npm run make-admin -- your@email.com
-```
-
-Example:
-
-```bash
-npm run make-admin -- admin@example.com
-```
-
-The script changes that registered user's role from:
-
-```text
-user
-```
-
-to:
-
-```text
-admin
-```
-
-Log in again with that account.
-
-The Dashboard option will then be available.
+Admin:
+1. Register an account normally.
+2. From the backend directory run:
+   npm run make-admin -- registered-email@example.com
+3. Login using the same email and password used during registration.
+4. The Dashboard option will become available.
 
 ---
 
