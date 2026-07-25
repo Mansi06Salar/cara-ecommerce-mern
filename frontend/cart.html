@@ -6,118 +6,235 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CARA - Cart</title>
+    <title>Shopping Cart | Cara</title>
 
     <link
         rel="stylesheet"
-        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    >
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .cart-message {
-            text-align: center;
-            padding: 30px;
-            font-size: 18px;
-        }
+        /* ========================================
+           CART RESPONSIVE LAYOUT
+        ======================================== */
 
-        #cart-items input {
-            width: 70px;
-        }
-
-        .product-size {
-            display: block;
-            margin-top: 5px;
-            font-size: 13px;
-            color: #606063;
+        #mobile-cart-items {
+            display: none;
         }
 
         .remove-cart-item {
-            border: none;
             background: transparent;
+            border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
+            color: #1a1a1a;
         }
 
-        #checkoutBtn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .remove-cart-item:hover {
+            color: #c0392b;
+        }
+
+        /* ========================================
+           MOBILE CART
+        ======================================== */
+
+        @media (max-width: 477px) {
+
+            /* Hide desktop table */
+            #cart .desktop-cart-table {
+                display: none;
+            }
+
+            #cart {
+                overflow: visible;
+                padding: 20px 15px;
+            }
+
+            /* Show mobile cards */
+            #mobile-cart-items {
+                display: block;
+                width: 100%;
+            }
+
+            .mobile-cart-card {
+                width: 100%;
+                background: #ffffff;
+                border: 1px solid #e2e9e1;
+                border-radius: 8px;
+                padding: 14px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .mobile-cart-top {
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+            }
+
+            .mobile-cart-image {
+                width: 80px;
+                height: 80px;
+                flex-shrink: 0;
+                object-fit: cover;
+                border-radius: 6px;
+                background: #f6f6f6;
+            }
+
+            .mobile-cart-info {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .mobile-cart-info h4 {
+                font-size: 14px;
+                line-height: 20px;
+                margin: 0 0 8px;
+                color: #1a1a1a;
+            }
+
+            .mobile-cart-info p {
+                font-size: 12px;
+                line-height: 18px;
+                margin: 2px 0;
+                color: #465b52;
+            }
+
+            .mobile-cart-details {
+                margin-top: 14px;
+                padding-top: 12px;
+                border-top: 1px solid #e2e9e1;
+            }
+
+            .mobile-cart-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+                font-size: 13px;
+            }
+
+            .mobile-cart-row strong {
+                color: #1a1a1a;
+            }
+
+            .mobile-cart-row .cart-quantity {
+                width: 65px;
+                padding: 7px;
+                border: 1px solid #cce7d0;
+                border-radius: 4px;
+                outline: none;
+            }
+
+            .mobile-cart-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 10px;
+                border-top: 1px solid #e2e9e1;
+            }
+
+            .mobile-cart-subtotal {
+                font-size: 14px;
+                font-weight: 700;
+                color: #088178;
+            }
+
+            .mobile-remove-btn {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                border: none;
+                background: transparent;
+                color: #c0392b;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .mobile-remove-btn i {
+                font-size: 14px;
+            }
+
+            .mobile-empty-cart {
+                width: 100%;
+                text-align: center;
+                padding: 35px 15px;
+                border: 1px solid #e2e9e1;
+                border-radius: 8px;
+                background: #ffffff;
+                color: #465b52;
+                font-size: 13px;
+            }
+
+            #cart-add {
+                padding: 0 15px 20px;
+            }
+
+            #sub-total {
+                width: 100%;
+                margin: 0;
+                padding: 20px;
+            }
+
+            #sub-total button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ========================================
-         HEADER
-    ======================================== -->
-
+    <!-- Header -->
     <section id="header">
 
         <a href="index.html">
             <img
                 src="Images/logo.png"
                 class="logo"
-                alt="CARA Logo"
-            >
+                alt="Cara logo">
         </a>
 
         <div>
-
             <ul id="navbar">
 
                 <li>
-                    <a href="index.html">
-                        Home
-                    </a>
+                    <a href="index.html">Home</a>
                 </li>
 
                 <li>
-                    <a href="shop.html">
-                        Shop
-                    </a>
+                    <a href="shop.html">Shop</a>
                 </li>
 
                 <li>
-                    <a href="blog.html">
-                        Blog
-                    </a>
+                    <a href="blog.html">Blog</a>
                 </li>
 
                 <li>
-                    <a href="about.html">
-                        About
-                    </a>
+                    <a href="about.html">About</a>
                 </li>
 
                 <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
+                    <a href="contact.html">Contact</a>
                 </li>
 
                 <li>
-                    <a href="orders.html">
-                        Orders
-                    </a>
+                    <a href="orders.html">Orders</a>
                 </li>
 
                 <li>
-                    <a href="admin.html">
-                        Dashboard
-                    </a>
+                    <a href="admin.html">Dashboard</a>
                 </li>
 
                 <li id="lg-bag">
-
                     <a
                         class="active"
-                        href="cart.html"
-                    >
+                        href="cart.html">
                         <i class="far fa-shopping-bag"></i>
                     </a>
-
                 </li>
 
                 <a href="#" id="close">
@@ -125,12 +242,9 @@
                 </a>
 
             </ul>
-
         </div>
 
-
         <!-- Mobile Navigation -->
-
         <div id="mobile">
 
             <a href="cart.html">
@@ -139,115 +253,75 @@
 
             <i
                 id="bar"
-                class="fas fa-outdent"
-            ></i>
+                class="fas fa-outdent">
+            </i>
 
         </div>
 
     </section>
 
 
-    <!-- ========================================
-         CART BANNER
-    ======================================== -->
-
+    <!-- Cart Header -->
     <section
         id="page-header"
-        class="about-header"
-    >
+        class="about-header">
 
-        <h2>#your_cart</h2>
+        <h2>#YourCart</h2>
 
         <p>
-            Review your items before checkout
+            Review your products before checkout.
         </p>
 
     </section>
 
 
-    <!-- ========================================
-         CART TABLE
-    ======================================== -->
-
+    <!-- Cart -->
     <section
         id="cart"
-        class="section-p1"
-    >
+        class="section-p1">
 
-        <table width="100%">
+        <!-- Desktop / Tablet Cart -->
+        <table
+            width="100%"
+            class="desktop-cart-table">
 
             <thead>
 
                 <tr>
-
                     <td>Remove</td>
-
                     <td>Image</td>
-
                     <td>Product</td>
-
+                    <td>Size</td>
                     <td>Price</td>
-
                     <td>Quantity</td>
-
                     <td>Subtotal</td>
-
                 </tr>
 
             </thead>
 
-
             <tbody id="cart-items">
 
-                <tr>
-
-                    <td
-                        colspan="6"
-                        class="cart-message"
-                    >
-                        Loading cart...
-                    </td>
-
-                </tr>
+                <!-- Cart items loaded from MongoDB -->
 
             </tbody>
 
         </table>
 
-    </section>
 
+        <!-- Mobile Cart -->
+        <div id="mobile-cart-items">
 
-    <!-- ========================================
-         CART TOTALS
-    ======================================== -->
-
-    <section
-        id="cart-add"
-        class="section-p1"
-    >
-
-        <div id="coupon">
-
-            <h3>Apply Coupon</h3>
-
-            <div>
-
-                <input
-                    type="text"
-                    placeholder="Enter your Coupon"
-                >
-
-                <button
-                    class="normal"
-                    type="button"
-                >
-                    Apply
-                </button>
-
-            </div>
+            <!-- Mobile cards loaded from MongoDB -->
 
         </div>
 
+    </section>
+
+
+    <!-- Cart Total -->
+    <section
+        id="cart-add"
+        class="section-p1">
 
         <div id="sub-total">
 
@@ -256,20 +330,16 @@
             <table>
 
                 <tr>
-
-                    <td>
-                        Cart Subtotal
-                    </td>
-
-                    <td id="cart-subtotal">
-                        $0.00
-                    </td>
-
+                    <td>Cart Subtotal</td>
+                    <td id="cart-subtotal">$0.00</td>
                 </tr>
 
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
 
                 <tr>
-
                     <td>
                         <strong>Total</strong>
                     </td>
@@ -279,18 +349,16 @@
                             $0.00
                         </strong>
                     </td>
-
                 </tr>
 
             </table>
 
-
             <button
                 class="normal"
-                id="checkoutBtn"
-                type="button"
-            >
-                Proceed to checkout
+                id="checkout-btn">
+
+                Proceed To Checkout
+
             </button>
 
         </div>
@@ -298,10 +366,38 @@
     </section>
 
 
-    <!-- ========================================
-         FOOTER
-    ======================================== -->
+    <!-- Continue Shopping -->
+    <section
+        id="newsletter"
+        class="section-p1 section-m1">
 
+        <div class="newstext">
+
+            <h4>Looking For More?</h4>
+
+            <p>
+                Continue exploring the Cara collection and discover
+                <span>more styles you'll love</span>.
+            </p>
+
+        </div>
+
+        <div class="form">
+
+            <a href="shop.html">
+
+                <button class="normal">
+                    Continue Shopping
+                </button>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
     <footer class="section-p1">
 
         <div class="col">
@@ -309,44 +405,26 @@
             <img
                 class="logo"
                 src="Images/logo.png"
-                alt="CARA Logo"
-            >
+                alt="Cara logo">
 
-            <h4>Contact</h4>
+            <h4>Cara</h4>
 
             <div class="contact-info">
 
                 <p>
-                    <strong>Address:</strong>
-                    562 Wellington Road, Street 32, San Francisco
+                    A full-stack e-commerce experience built for
+                    browsing, shopping, and order management.
                 </p>
 
                 <p>
-                    <strong>Phone:</strong>
-                    +01 2222 365 / (+91) 01 2345 6789
+                    <strong>Shopping:</strong>
+                    Browse products and manage your cart
                 </p>
 
                 <p>
-                    <strong>Hours:</strong>
-                    10:00-18:00, Mon-Sat
+                    <strong>Orders:</strong>
+                    Track your purchases and order status
                 </p>
-
-            </div>
-
-
-            <div class="follow">
-
-                <h4>Follow Us</h4>
-
-                <div class="icon">
-
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-pinterest-p"></i>
-                    <i class="fab fa-youtube"></i>
-
-                </div>
 
             </div>
 
@@ -355,26 +433,14 @@
 
         <div class="col">
 
-            <h4>About</h4>
+            <h4>Explore</h4>
 
-            <a href="about.html">
-                About us
-            </a>
-
-            <a href="#">
-                Delivery Information
-            </a>
-
-            <a href="#">
-                Privacy Policy
-            </a>
-
-            <a href="#">
-                Terms & Conditions
-            </a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Style Journal</a>
 
             <a href="contact.html">
-                Contact Us
+                Help &amp; Support
             </a>
 
         </div>
@@ -384,24 +450,12 @@
 
             <h4>My Account</h4>
 
-            <a href="login.html">
-                Sign In
-            </a>
-
-            <a href="cart.html">
-                View Cart
-            </a>
-
-            <a href="#">
-                My Wishlist
-            </a>
+            <a href="login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="orders.html">My Orders</a>
 
             <a href="orders.html">
                 Track My Order
-            </a>
-
-            <a href="#">
-                Help
             </a>
 
         </div>
@@ -409,61 +463,94 @@
 
         <div class="col install">
 
-            <h4>Install App</h4>
+            <h4>Shop With Cara</h4>
 
             <p>
-                From App Store or Google Play
+                Browse our MongoDB-powered product collection.
             </p>
 
             <div class="row">
 
-                <img
-                    src="Images/application.jpg"
-                    alt="App Store"
-                >
+                <a href="shop.html">
 
-                <img
-                    src="Images/play.jpg"
-                    alt="Google Play"
-                >
+                    <button class="normal">
+                        Explore Collection
+                    </button>
+
+                </a>
 
             </div>
 
             <p>
-                Secured Payment Gateways
+                Secure Account &amp; Order Experience
             </p>
-
-            <img
-                src="Images/pay.png"
-                alt="Payment Methods"
-            >
 
         </div>
 
 
         <div class="copyright">
 
-            <p>Ecommerce</p>
+            <p>Cara E-Commerce</p>
 
         </div>
 
     </footer>
 
 
-    <!-- ========================================
-         CART API FUNCTIONS
-    ======================================== -->
-
-    <script src="js/cart.js"></script>
-
-
-    <!-- ========================================
-         CART PAGE LOGIC
-    ======================================== -->
-
+    <!-- Cart Logic -->
     <script>
 
-        let currentCart = null;
+        const CART_API_URL =
+            "http://localhost:5000/api/cart";
+
+        const ORDER_API_URL =
+            "http://localhost:5000/api/orders";
+
+
+        // ========================================
+        // GET AUTH TOKEN
+        // ========================================
+
+        function getToken() {
+
+            return localStorage.getItem("token");
+
+        }
+
+
+        // ========================================
+        // AUTH HEADERS
+        // ========================================
+
+        function getAuthHeaders() {
+
+            const token = getToken();
+
+            return {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            };
+
+        }
+
+
+        // ========================================
+        // HANDLE AUTH FAILURE
+        // ========================================
+
+        function handleAuthFailure() {
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            alert(
+                "Your session has expired. Please log in again."
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
 
 
         // ========================================
@@ -472,14 +559,13 @@
 
         async function loadCart() {
 
-            const token =
-                getAuthToken();
+            const token = getToken();
 
 
             if (!token) {
 
                 alert(
-                    "Please login to view your cart."
+                    "Please log in to view your cart."
                 );
 
                 window.location.href =
@@ -491,47 +577,22 @@
 
             try {
 
-                const response = await fetch(
-                    CART_API_URL,
-                    {
-                        method: "GET",
-
-                        headers: {
-
-                            "Authorization":
-                                `Bearer ${token}`
-
+                const response =
+                    await fetch(
+                        CART_API_URL,
+                        {
+                            method: "GET",
+                            headers: getAuthHeaders()
                         }
-                    }
-                );
-
-
-                const data =
-                    await response.json();
-
-
-                if (response.status === 401) {
-
-                    localStorage.removeItem(
-                        "token"
-                    );
-
-                    localStorage.removeItem(
-                        "user"
-                    );
-
-                    localStorage.removeItem(
-                        "userName"
                     );
 
 
-                    alert(
-                        "Your login session has expired. Please login again."
-                    );
+                if (
+                    response.status === 401 ||
+                    response.status === 403
+                ) {
 
-
-                    window.location.href =
-                        "login.html";
+                    handleAuthFailure();
 
                     return;
                 }
@@ -540,320 +601,464 @@
                 if (!response.ok) {
 
                     throw new Error(
-                        data.message ||
-                        "Unable to load cart"
+                        "Failed to load cart"
                     );
 
                 }
 
 
-                currentCart = data;
+                const cart =
+                    await response.json();
 
 
-                displayCart(data);
+                renderCart(cart);
 
 
             } catch (error) {
 
                 console.error(
-                    "Load cart error:",
+                    "Error loading cart:",
                     error
                 );
 
-
-                document.getElementById(
-                    "cart-items"
-                ).innerHTML = `
-
-                    <tr>
-
-                        <td
-                            colspan="6"
-                            class="cart-message"
-                        >
-                            Unable to load cart.
-                        </td>
-
-                    </tr>
-
-                `;
+                alert(
+                    "Unable to load your cart. Please try again."
+                );
 
             }
 
         }
 
 
-
         // ========================================
-        // DISPLAY CART
+        // RENDER CART
         // ========================================
 
-        function displayCart(cart) {
+        function renderCart(cart) {
 
-            const cartContainer =
+            const cartItemsContainer =
                 document.getElementById(
                     "cart-items"
                 );
 
 
-            const items =
-                cart.items || [];
+            const mobileCartContainer =
+                document.getElementById(
+                    "mobile-cart-items"
+                );
 
 
-            if (items.length === 0) {
+            const subtotalElement =
+                document.getElementById(
+                    "cart-subtotal"
+                );
 
-                cartContainer.innerHTML = `
 
+            const totalElement =
+                document.getElementById(
+                    "cart-total"
+                );
+
+
+            const checkoutButton =
+                document.getElementById(
+                    "checkout-btn"
+                );
+
+
+            cartItemsContainer.innerHTML = "";
+
+            mobileCartContainer.innerHTML = "";
+
+
+            if (
+                !cart ||
+                !cart.items ||
+                cart.items.length === 0
+            ) {
+
+                cartItemsContainer.innerHTML = `
                     <tr>
-
-                        <td
-                            colspan="6"
-                            class="cart-message"
-                        >
-
+                        <td colspan="7">
                             Your cart is empty.
-
-                            <br><br>
-
-                            <a href="shop.html">
-                                Continue Shopping
-                            </a>
-
                         </td>
-
                     </tr>
-
                 `;
 
 
-                updateCartTotals(0);
+                mobileCartContainer.innerHTML = `
+                    <div class="mobile-empty-cart">
+                        Your cart is empty.
+                    </div>
+                `;
+
+
+                subtotalElement.innerText =
+                    "$0.00";
+
+
+                totalElement.innerText =
+                    "$0.00";
+
+
+                checkoutButton.disabled = true;
+
 
                 return;
             }
 
 
-            cartContainer.innerHTML = "";
+            checkoutButton.disabled = false;
 
 
-            let total = 0;
+            let cartTotal = 0;
 
 
-            items.forEach((item) => {
+            cart.items.forEach(
+                (item) => {
 
-                const product =
-                    item.product;
+                    const product =
+                        item.product;
 
 
-                if (!product) {
-                    return;
+                    if (!product) {
+
+                        return;
+
+                    }
+
+
+                    const price =
+                        Number(product.price);
+
+
+                    const quantity =
+                        Number(item.quantity);
+
+
+                    const itemSubtotal =
+                        price * quantity;
+
+
+                    cartTotal +=
+                        itemSubtotal;
+
+
+                    // ========================================
+                    // DESKTOP TABLE ROW
+                    // ========================================
+
+                    const row =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    row.innerHTML = `
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="remove-cart-item"
+                                data-product-id="${product._id}"
+                                data-size="${item.size}"
+                                aria-label="Remove ${product.name} from cart">
+
+                                <i class="far fa-times-circle"></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <td>
+
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}">
+
+                        </td>
+
+
+                        <td>
+                            ${product.name}
+                        </td>
+
+
+                        <td>
+                            ${item.size || "-"}
+                        </td>
+
+
+                        <td>
+                            $${price.toFixed(2)}
+                        </td>
+
+
+                        <td>
+
+                            <input
+                                type="number"
+                                class="cart-quantity"
+                                data-product-id="${product._id}"
+                                data-size="${item.size}"
+                                value="${quantity}"
+                                min="1"
+                                max="${product.stock}">
+
+                        </td>
+
+
+                        <td>
+                            $${itemSubtotal.toFixed(2)}
+                        </td>
+
+                    `;
+
+
+                    cartItemsContainer
+                        .appendChild(row);
+
+
+                    // ========================================
+                    // MOBILE CART CARD
+                    // ========================================
+
+                    const mobileCard =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    mobileCard.className =
+                        "mobile-cart-card";
+
+
+                    mobileCard.innerHTML = `
+
+                        <div class="mobile-cart-top">
+
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}"
+                                class="mobile-cart-image">
+
+
+                            <div class="mobile-cart-info">
+
+                                <h4>
+                                    ${product.name}
+                                </h4>
+
+                                <p>
+                                    <strong>Size:</strong>
+                                    ${item.size || "-"}
+                                </p>
+
+                                <p>
+                                    <strong>Price:</strong>
+                                    $${price.toFixed(2)}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mobile-cart-details">
+
+                            <div class="mobile-cart-row">
+
+                                <span>
+                                    Quantity
+                                </span>
+
+                                <input
+                                    type="number"
+                                    class="cart-quantity"
+                                    data-product-id="${product._id}"
+                                    data-size="${item.size}"
+                                    value="${quantity}"
+                                    min="1"
+                                    max="${product.stock}">
+
+                            </div>
+
+
+                            <div class="mobile-cart-bottom">
+
+                                <button
+                                    type="button"
+                                    class="remove-cart-item mobile-remove-btn"
+                                    data-product-id="${product._id}"
+                                    data-size="${item.size}">
+
+                                    <i class="far fa-times-circle"></i>
+
+                                    Remove
+
+                                </button>
+
+
+                                <div class="mobile-cart-subtotal">
+
+                                    Subtotal:
+                                    $${itemSubtotal.toFixed(2)}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    mobileCartContainer
+                        .appendChild(
+                            mobileCard
+                        );
+
                 }
+            );
 
 
-                const price =
-                    Number(product.price);
+            subtotalElement.innerText =
+                `$${cartTotal.toFixed(2)}`;
 
 
-                const quantity =
-                    Number(item.quantity);
+            totalElement.innerText =
+                `$${cartTotal.toFixed(2)}`;
 
 
-                const subtotal =
-                    price * quantity;
+            attachCartEvents();
+
+        }
 
 
-                total += subtotal;
+        // ========================================
+        // ATTACH CART EVENTS
+        // ========================================
 
+        function attachCartEvents() {
 
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                row.innerHTML = `
-
-                    <td>
-
-                        <button
-                            type="button"
-                            class="remove-cart-item"
-                            aria-label="Remove product"
-                        >
-
-                            <i
-                                class="far fa-times-circle"
-                            ></i>
-
-                        </button>
-
-                    </td>
-
-
-                    <td>
-
-                        <img
-                            src="${product.image}"
-                            alt="${product.name}"
-                        >
-
-                    </td>
-
-
-                    <td>
-
-                        ${product.name}
-
-                        <span class="product-size">
-
-                            Size:
-                            ${item.size || "N/A"}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        $${price.toFixed(2)}
-
-                    </td>
-
-
-                    <td>
-
-                        <input
-                            type="number"
-                            class="cart-quantity"
-                            min="1"
-                            max="${product.stock}"
-                            value="${quantity}"
-                        >
-
-                    </td>
-
-
-                    <td>
-
-                        $${subtotal.toFixed(2)}
-
-                    </td>
-
-                `;
-
-
-                // ========================================
-                // REMOVE BUTTON
-                // ========================================
-
-                row
-                    .querySelector(
-                        ".remove-cart-item"
-                    )
-                    .addEventListener(
-                        "click",
-                        function () {
-
-                            removeCartItem(
-                                product._id,
-                                item.size
-                            );
-
-                        }
-                    );
-
-
-                // ========================================
-                // QUANTITY CHANGE
-                // ========================================
-
-                row
-                    .querySelector(
-                        ".cart-quantity"
-                    )
-                    .addEventListener(
-                        "change",
-                        function () {
-
-                            updateCartQuantity(
-                                product._id,
-                                item.size,
-                                this.value
-                            );
-
-                        }
-                    );
-
-
-                cartContainer.appendChild(
-                    row
+            const quantityInputs =
+                document.querySelectorAll(
+                    ".cart-quantity"
                 );
 
-            });
+
+            quantityInputs.forEach(
+                (input) => {
+
+                    input.addEventListener(
+                        "change",
+                        async function () {
+
+                            const productId =
+                                this.dataset.productId;
 
 
-            updateCartTotals(total);
+                            const size =
+                                this.dataset.size;
+
+
+                            const quantity =
+                                Number(this.value);
+
+
+                            const maxQuantity =
+                                Number(this.max);
+
+
+                            if (
+                                !Number.isInteger(quantity) ||
+                                quantity < 1
+                            ) {
+
+                                alert(
+                                    "Please enter a valid quantity."
+                                );
+
+                                await loadCart();
+
+                                return;
+                            }
+
+
+                            if (
+                                maxQuantity &&
+                                quantity > maxQuantity
+                            ) {
+
+                                alert(
+                                    `Only ${maxQuantity} item(s) available in stock.`
+                                );
+
+                                await loadCart();
+
+                                return;
+                            }
+
+
+                            await updateCartItem(
+                                productId,
+                                size,
+                                quantity
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            const removeButtons =
+                document.querySelectorAll(
+                    ".remove-cart-item"
+                );
+
+
+            removeButtons.forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        async function () {
+
+                            const productId =
+                                this.dataset.productId;
+
+
+                            const size =
+                                this.dataset.size;
+
+
+                            await removeCartItem(
+                                productId,
+                                size
+                            );
+
+                        }
+                    );
+
+                }
+            );
 
         }
 
 
-
         // ========================================
-        // UPDATE CART TOTALS
-        // ========================================
-
-        function updateCartTotals(total) {
-
-            document.getElementById(
-                "cart-subtotal"
-            ).textContent =
-                `$${Number(total).toFixed(2)}`;
-
-
-            document.getElementById(
-                "cart-total"
-            ).textContent =
-                `$${Number(total).toFixed(2)}`;
-
-        }
-
-
-
-        // ========================================
-        // UPDATE QUANTITY
+        // UPDATE CART ITEM
         // ========================================
 
-        async function updateCartQuantity(
+        async function updateCartItem(
             productId,
             size,
             quantity
         ) {
-
-            const token =
-                getAuthToken();
-
-
-            const parsedQuantity =
-                Number(quantity);
-
-
-            if (
-                !Number.isInteger(
-                    parsedQuantity
-                ) ||
-                parsedQuantity < 1
-            ) {
-
-                alert(
-                    "Quantity must be at least 1."
-                );
-
-
-                loadCart();
-
-                return;
-            }
-
 
             try {
 
@@ -861,96 +1066,63 @@
                     await fetch(
                         `${CART_API_URL}/update`,
                         {
-
                             method: "PUT",
 
+                            headers:
+                                getAuthHeaders(),
 
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json",
-
-                                "Authorization":
-                                    `Bearer ${token}`
-
-                            },
-
-
-                            body: JSON.stringify({
-
-                                productId,
-
-                                quantity:
-                                    parsedQuantity,
-
-                                size
-
-                            })
-
+                            body:
+                                JSON.stringify({
+                                    productId,
+                                    size,
+                                    quantity
+                                })
                         }
                     );
+
+
+                if (
+                    response.status === 401 ||
+                    response.status === 403
+                ) {
+
+                    handleAuthFailure();
+
+                    return;
+                }
 
 
                 const data =
                     await response.json();
 
 
-                if (response.status === 401) {
-
-                    localStorage.removeItem(
-                        "token"
-                    );
-
-
-                    window.location.href =
-                        "login.html";
-
-                    return;
-                }
-
-
                 if (!response.ok) {
 
-                    alert(
+                    throw new Error(
                         data.message ||
-                        "Unable to update quantity."
+                        "Unable to update cart"
                     );
 
-
-                    loadCart();
-
-                    return;
                 }
 
 
-                currentCart =
-                    data.cart;
-
-
-                displayCart(
-                    data.cart
-                );
+                await loadCart();
 
 
             } catch (error) {
 
                 console.error(
-                    "Update cart error:",
+                    "Error updating cart:",
                     error
                 );
 
+                alert(error.message);
 
-                alert(
-                    "Unable to update cart."
-                );
-
-
-                loadCart();
+                await loadCart();
 
             }
 
         }
-
 
 
         // ========================================
@@ -962,276 +1134,178 @@
             size
         ) {
 
-            const token =
-                getAuthToken();
-
-
             try {
 
                 const response =
                     await fetch(
                         `${CART_API_URL}/remove`,
                         {
-
                             method: "DELETE",
 
+                            headers:
+                                getAuthHeaders(),
 
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json",
-
-                                "Authorization":
-                                    `Bearer ${token}`
-
-                            },
-
-
-                            body: JSON.stringify({
-
-                                productId,
-
-                                size
-
-                            })
-
+                            body:
+                                JSON.stringify({
+                                    productId,
+                                    size
+                                })
                         }
                     );
+
+
+                if (
+                    response.status === 401 ||
+                    response.status === 403
+                ) {
+
+                    handleAuthFailure();
+
+                    return;
+                }
 
 
                 const data =
                     await response.json();
 
 
-                if (response.status === 401) {
-
-                    localStorage.removeItem(
-                        "token"
-                    );
-
-
-                    window.location.href =
-                        "login.html";
-
-                    return;
-                }
-
-
                 if (!response.ok) {
 
-                    alert(
+                    throw new Error(
                         data.message ||
-                        "Unable to remove product."
+                        "Unable to remove item"
                     );
 
-                    return;
                 }
 
 
-                currentCart =
-                    data.cart;
-
-
-                displayCart(
-                    data.cart
-                );
+                await loadCart();
 
 
             } catch (error) {
 
                 console.error(
-                    "Remove cart error:",
+                    "Error removing cart item:",
                     error
                 );
 
-
-                alert(
-                    "Unable to remove product from cart."
-                );
+                alert(error.message);
 
             }
 
         }
 
 
-
         // ========================================
         // CHECKOUT
         // ========================================
 
-        document
-            .getElementById(
-                "checkoutBtn"
-            )
-            .addEventListener(
-                "click",
-                async function () {
+        async function checkout() {
 
-                    // Check cart
-                    if (
-                        !currentCart ||
-                        !currentCart.items ||
-                        currentCart.items.length === 0
-                    ) {
-
-                        alert(
-                            "Your cart is empty."
-                        );
-
-                        return;
-                    }
+            const checkoutButton =
+                document.getElementById(
+                    "checkout-btn"
+                );
 
 
-                    const token =
-                        getAuthToken();
+            if (checkoutButton.disabled) {
+
+                return;
+
+            }
 
 
-                    if (!token) {
-
-                        alert(
-                            "Please login before checkout."
-                        );
+            checkoutButton.disabled = true;
 
 
-                        window.location.href =
-                            "login.html";
-
-                        return;
-                    }
+            checkoutButton.innerText =
+                "Processing...";
 
 
-                    const checkoutButton =
-                        document.getElementById(
-                            "checkoutBtn"
-                        );
+            try {
 
-
-                    try {
-
-                        // Prevent double click
-                        checkoutButton.disabled =
-                            true;
-
-
-                        checkoutButton.innerText =
-                            "Placing Order...";
-
-
-                        const response =
-                            await fetch(
-                                "http://localhost:5000/api/orders/checkout",
-                                {
-
-                                    method: "POST",
-
-
-                                    headers: {
-
-                                        "Authorization":
-                                            `Bearer ${token}`
-
-                                    }
-
-                                }
-                            );
-
-
-                        const data =
-                            await response.json();
-
-
-                        // ========================================
-                        // AUTH ERROR
-                        // ========================================
-
-                        if (
-                            response.status === 401
-                        ) {
-
-                            localStorage.removeItem(
-                                "token"
-                            );
-
-                            localStorage.removeItem(
-                                "user"
-                            );
-
-                            localStorage.removeItem(
-                                "userName"
-                            );
-
-
-                            alert(
-                                "Your login session has expired. Please login again."
-                            );
-
-
-                            window.location.href =
-                                "login.html";
-
-                            return;
+                const response =
+                    await fetch(
+                        `${ORDER_API_URL}/checkout`,
+                        {
+                            method: "POST",
+                            headers: getAuthHeaders()
                         }
+                    );
 
 
-                        // ========================================
-                        // CHECKOUT ERROR
-                        // ========================================
+                if (
+                    response.status === 401 ||
+                    response.status === 403
+                ) {
 
-                        if (!response.ok) {
+                    handleAuthFailure();
 
-                            alert(
-                                data.message ||
-                                "Unable to place order."
-                            );
-
-                            return;
-                        }
+                    return;
+                }
 
 
-                        // ========================================
-                        // SUCCESS
-                        // ========================================
-
-                        alert(
-                            "Order placed successfully!"
-                        );
+                const data =
+                    await response.json();
 
 
-                        window.location.href =
-                            "orders.html";
+                if (!response.ok) {
 
-
-                    } catch (error) {
-
-                        console.error(
-                            "Checkout error:",
-                            error
-                        );
-
-
-                        alert(
-                            "Unable to place order. Please try again."
-                        );
-
-
-                    } finally {
-
-                        checkoutButton.disabled =
-                            false;
-
-
-                        checkoutButton.innerText =
-                            "Proceed to checkout";
-
-                    }
+                    throw new Error(
+                        data.message ||
+                        "Checkout failed"
+                    );
 
                 }
-            );
 
+
+                alert(
+                    "Order placed successfully!"
+                );
+
+
+                window.location.href =
+                    "orders.html";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Checkout error:",
+                    error
+                );
+
+
+                alert(error.message);
+
+
+                checkoutButton.disabled = false;
+
+
+                checkoutButton.innerText =
+                    "Proceed To Checkout";
+
+            }
+
+        }
 
 
         // ========================================
-        // LOAD CART WHEN PAGE OPENS
+        // CHECKOUT BUTTON
+        // ========================================
+
+        document
+            .getElementById(
+                "checkout-btn"
+            )
+            .addEventListener(
+                "click",
+                checkout
+            );
+
+
+        // ========================================
+        // INITIAL LOAD
         // ========================================
 
         loadCart();
@@ -1239,8 +1313,7 @@
     </script>
 
 
-    <!-- Existing CARA JavaScript -->
-
+    <!-- Existing Cara JavaScript -->
     <script src="script.js"></script>
 
 </body>

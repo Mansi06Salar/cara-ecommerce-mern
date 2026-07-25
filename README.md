@@ -2,7 +2,9 @@
 
 CARA E-Commerce V2 is a full-stack e-commerce web application built with HTML, CSS, JavaScript, Node.js, Express.js, MongoDB, and JWT authentication.
 
-The project includes customer authentication, dynamic product management, shopping cart functionality, order placement, order history, role-based authorization, and an admin dashboard for managing products and customer orders.
+The application provides a complete customer shopping flow along with role-based administrative functionality for managing products, inventory, orders, and store statistics.
+
+The interface is responsive across desktop, tablet, and mobile screen sizes.
 
 ---
 
@@ -13,15 +15,17 @@ The project includes customer authentication, dynamic product management, shoppi
 - User registration
 - User login and logout
 - JWT-based authentication
-- Browse products dynamically loaded from MongoDB
-- View individual product details
-- Select product size and quantity
+- Dynamic product catalogue powered by MongoDB
+- Individual product detail pages
+- Product size and quantity selection
 - Add products to cart
 - Update cart quantities
 - Remove products from cart
-- Checkout and place orders
-- View order history
-- View updated order status
+- Stock validation
+- Checkout and order placement
+- Order history
+- Order status tracking
+- Responsive shopping experience
 
 ### Admin Features
 
@@ -30,11 +34,13 @@ The project includes customer authentication, dynamic product management, shoppi
 - View total products
 - View total orders
 - View total revenue
-- Add products
-- Edit products
+- Add new products
+- Edit existing products
 - Delete products
+- Manage product inventory
 - View customer orders
 - Update order status
+- Responsive product and order management interfaces
 
 Supported order statuses:
 
@@ -55,6 +61,7 @@ Supported order statuses:
 - JavaScript
 - Fetch API
 - Font Awesome
+- Responsive CSS Media Queries
 
 ### Backend
 
@@ -66,113 +73,108 @@ Supported order statuses:
 ### Authentication & Security
 
 - JSON Web Tokens (JWT)
-- bcryptjs
+- bcryptjs password hashing
+- Protected API routes
 - Role-based authorization
-- Environment variables with dotenv
+- Environment variables using dotenv
+- Server-side admin authorization
 
 ### Development Tools
 
 - Git
 - GitHub
 - VS Code
-- Postman for API testing
+- Postman
 
-> Postman is used only as an optional development and API testing tool. It is not required to use the website.
+> Postman is used only for development and API testing. It is not required to use the application.
 
 ---
 
 ## Project Structure
 
 ```text
-cara-ecommerce-mern/
-│
-├── backend/
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   │
-│   ├── models/
-│   │   ├── Cart.js
-│   │   ├── Order.js
-│   │   ├── Product.js
-│   │   └── User.js
-│   │
-│   ├── routes/
-│   │   ├── adminRoutes.js
-│   │   ├── authRoutes.js
-│   │   ├── cartRoutes.js
-│   │   ├── orderRoutes.js
-│   │   └── productRoutes.js
-│   │
-│   ├── .env.example
-│   ├── .gitignore
-│   ├── makeAdmin.js
-│   ├── seedProducts.js
-│   ├── package.json
-│   └── server.js
-│
-├── frontend/
-│   ├── Images/
-│   ├── js/
-│   │   ├── cart.js
-│   │   └── products.js
-│   │
-│   ├── index.html
-│   ├── shop.html
-│   ├── Single_product.html
-│   ├── cart.html
-│   ├── orders.html
-│   ├── login.html
-│   ├── register.html
-│   ├── admin.html
-│   ├── manage-products.html
-│   ├── manage-orders.html
-│   ├── blog.html
-│   ├── about.html
-│   ├── contact.html
-│   ├── script.js
-│   └── style.css
-│
-└── README.md
+cara-ecommerce-v2/
+|
+|-- backend/
+|   |-- middleware/
+|   |   `-- authMiddleware.js
+|   |
+|   |-- models/
+|   |   |-- Cart.js
+|   |   |-- Order.js
+|   |   |-- Product.js
+|   |   `-- User.js
+|   |
+|   |-- routes/
+|   |   |-- adminRoutes.js
+|   |   |-- authRoutes.js
+|   |   |-- cartRoutes.js
+|   |   |-- orderRoutes.js
+|   |   `-- productRoutes.js
+|   |
+|   |-- .env.example
+|   |-- .gitignore
+|   |-- makeAdmin.js
+|   |-- seedProducts.js
+|   |-- package.json
+|   `-- server.js
+|
+|-- frontend/
+|   |-- Images/
+|   |
+|   |-- js/
+|   |   |-- cart.js
+|   |   `-- products.js
+|   |
+|   |-- index.html
+|   |-- shop.html
+|   |-- Single_product.html
+|   |-- cart.html
+|   |-- orders.html
+|   |-- login.html
+|   |-- register.html
+|   |-- admin.html
+|   |-- manage-products.html
+|   |-- manage-orders.html
+|   |-- blog.html
+|   |-- about.html
+|   |-- contact.html
+|   |-- script.js
+|   `-- style.css
+|
+`-- README.md
 ```
 
 ---
 
 # Running the Project Locally
 
-CARA does not need to be deployed in order to run.
-
-You can clone the repository and run the frontend, backend, and database functionality locally.
-
----
+The complete application can be run locally with the frontend, Express backend, and MongoDB database.
 
 ## Prerequisites
 
-Install or have access to the following:
+Install or configure:
 
 - Node.js
 - npm
 - Git
-- MongoDB Atlas account
+- MongoDB Atlas
 - A modern web browser
 
 VS Code is recommended but not required.
-
-If you want to use the instructions below for starting the frontend, install the **Live Server** extension in VS Code.
 
 ---
 
 ## 1. Clone the Repository
 
-Clone the project:
-
 ```bash
-git clone https://github.com/Mansi06Salar/cara-ecommerce-mern.git
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-Move into the cloned project:
+Move into the project directory:
 
 ```bash
-cd cara-ecommerce-mern
+cd cara-ecommerce-v2
 ```
 
 ---
@@ -185,42 +187,25 @@ Move into the backend directory:
 cd backend
 ```
 
-Install the required Node.js packages:
+Install the dependencies:
 
 ```bash
 npm install
 ```
 
-This installs the dependencies listed in `package.json`.
-
 ---
 
 ## 3. Configure Environment Variables
 
-The real `.env` file is intentionally excluded from GitHub because it contains private credentials.
+The real `.env` file is intentionally excluded from Git because it contains private configuration values.
 
-A template is provided in:
+A template is provided at:
 
 ```text
 backend/.env.example
 ```
 
-Create a new file called:
-
-```text
-.env
-```
-
-inside the `backend` directory.
-
-Your backend directory should then contain both:
-
-```text
-.env
-.env.example
-```
-
-Add the following variables to `.env`:
+Create a `.env` file inside the `backend` directory:
 
 ```env
 PORT=5000
@@ -228,267 +213,118 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 ```
 
-Replace the placeholder values with your own configuration.
+Replace the placeholder values with your own credentials.
 
----
+### MongoDB
 
-### MongoDB Setup
+Create a MongoDB Atlas database and obtain a connection string.
 
-Create or use a MongoDB Atlas cluster and obtain your MongoDB connection string.
-
-A connection string has a format similar to:
+Example format:
 
 ```text
 mongodb+srv://USERNAME:PASSWORD@YOUR_CLUSTER/DATABASE_NAME
 ```
 
-Replace:
-
-- `USERNAME` with your MongoDB database username
-- `PASSWORD` with your MongoDB database password
-- `YOUR_CLUSTER` with your Atlas cluster address
-- `DATABASE_NAME` with the database name you want CARA to use
-
-For example, you may choose a database name such as:
-
-```text
-cara_ecommerce
-```
-
-MongoDB can create the database when the application first writes data to it.
-
-> Never commit your real MongoDB URI, username, or password to GitHub.
-
----
+Never commit a connection string containing real credentials.
 
 ### JWT Secret
 
-Set `JWT_SECRET` to your own private random string.
+Use a private, sufficiently long random value for `JWT_SECRET`.
 
-For example:
+Example:
 
 ```env
 JWT_SECRET=replace_this_with_your_own_long_random_secret
 ```
 
-The JWT secret is used by the backend to sign and verify authentication tokens.
-
-Do not commit your real JWT secret to GitHub.
+Never expose the production JWT secret publicly.
 
 ---
 
 ## 4. Seed the Product Database
 
-A new MongoDB database will not initially contain CARA products.
+A new MongoDB database initially contains no products.
 
-The project includes a product seed script that inserts the sample product catalog.
+CARA includes a seed script for populating the sample product catalogue.
 
-From the `backend` directory, run:
+From the backend directory, run:
 
 ```bash
 npm run seed
 ```
 
-A successful run should display output similar to:
-
-```text
-MongoDB Connected
-
-Added: Cartoon Astronaut Shirts
-Added: MILDIN Printed Spread Collar Shirt
-...
-
-Product seeding completed!
-Added: 16
-Skipped: 0
-
-MongoDB connection closed.
-```
-
-The exact output may vary.
-
-The seed script avoids inserting the same seeded products repeatedly.
+The seed script adds the sample CARA products to the configured MongoDB database.
 
 ---
 
 ## 5. Start the Backend
 
-From the `backend` directory, run:
+For development:
 
 ```bash
 npm run dev
 ```
 
-Alternatively:
+Or:
 
 ```bash
 npm start
 ```
 
-When the connection succeeds, the terminal should display:
+A successful startup displays messages similar to:
 
 ```text
 MongoDB Connected
 Server running on port 5000
 ```
 
-The backend API will run locally on port `5000`.
-
-You can verify the backend by opening:
-
-```text
-http://localhost:5000
-```
-
-The browser should display:
-
-```text
-Backend Running
-```
-
-> Keep this terminal running while using the CARA website.
+The local API runs on port `5000` by default.
 
 ---
 
 ## 6. Start the Frontend
 
-Open the cloned project in VS Code.
+Run the `frontend` directory through a local development server.
 
-Navigate to:
+For example, using the VS Code Live Server extension:
 
-```text
-frontend/index.html
-```
+1. Open `frontend/index.html`.
+2. Right-click the file.
+3. Select **Open with Live Server**.
 
-If you are using the VS Code Live Server extension:
-
-1. Right-click `frontend/index.html`.
-2. Select **Open with Live Server**.
-3. The CARA homepage will open in your browser.
-
-Keep the backend running at the same time.
+Keep the backend running while using features that communicate with the API.
 
 ---
 
-## 7. Create and Login as a Customer
+# User Accounts
 
-There are no predefined customer credentials.
+Users can create an account through the Register page using:
 
-You can create your own customer account.
+- Name
+- Email
+- Password
 
-1. Open the **Register** page.
-2. Enter any new name, email, and password.
-3. Submit the registration form.
-4. Go to the **Login** page.
-5. Enter the same email and password used during registration.
-6. Login to the website.
+Public registration creates standard customer accounts.
 
-For example:
-
-```text
-Name: Test User
-Email: testuser@example.com
-Password: Test@12345
-```
-
-These are example credentials only. You may register your own credentials.
-
-A newly registered account receives the default role:
+New users receive the default role:
 
 ```text
 user
 ```
 
-After login, the customer can:
-
-- Browse products
-- View product details
-- Select size and quantity
-- Add products to the cart
-- Update or remove cart items
-- Checkout
-- Place orders
-- View order history
-- View updated order status
-
-> The email used for registration must be new for that database. To login, use the same email and password that were used during registration.
+After logging in, customers can browse products, manage their cart, place orders, and view their order history.
 
 ---
 
-## 8. Create and Login as an Admin
+# Admin Access
 
-There are **no predefined or hardcoded admin credentials**.
+Administrative access is protected through role-based authorization.
 
-An admin account is created by first registering a normal account and then promoting that account to the `admin` role.
+Public registration does **not** create administrator accounts. Newly registered accounts receive the `user` role by default.
 
-### Step 1 — Register an Account
+Administrator accounts are provisioned separately by the application owner. Admin-only backend routes verify both authentication and the user's current role before granting access.
 
-Open the CARA **Register** page and create an account normally.
-
-For example:
-
-```text
-Name: Test Admin
-Email: admin@example.com
-Password: Admin@12345
-```
-
-These are example credentials only.
-
-Remember the email and password used during registration.
-
-At this point, the account still has the normal:
-
-```text
-user
-```
-
-role.
-
-### Step 2 — Promote the Account to Admin
-
-Open a terminal in the `backend` directory.
-
-Run:
-
-```bash
-npm run make-admin -- registered-email@example.com
-```
-
-For example:
-
-```bash
-npm run make-admin -- admin@example.com
-```
-
-The email passed to `make-admin` must be the same email that was previously registered through the website.
-
-A successful command should display something similar to:
-
-```text
-MongoDB Connected
-admin@example.com is now an admin.
-MongoDB connection closed.
-```
-
-### Step 3 — Login as Admin
-
-Return to the CARA Login page.
-
-Login using the **same email and password that were used when registering the account**.
-
-For example:
-
-```text
-Email: admin@example.com
-Password: Admin@12345
-```
-
-The **Dashboard** option will now become available.
-
-> `make-admin` changes only the account role from `user` to `admin`. It does not create a new password or change the password used during registration.
-
-The admin can then access the protected dashboard and product/order management functionality.
+Normal customers attempting to access protected administrative resources receive an authorization error.
 
 ---
 
@@ -497,78 +333,95 @@ The admin can then access the protected dashboard and product/order management f
 ## Customer Flow
 
 ```text
-Register
-   ↓
-Login
-   ↓
+Register / Login
+       |
+       v
 Browse Shop
-   ↓
+       |
+       v
 View Product
-   ↓
+       |
+       v
 Select Size & Quantity
-   ↓
+       |
+       v
 Add to Cart
-   ↓
+       |
+       v
+Update / Remove Cart Items
+       |
+       v
 Checkout
-   ↓
+       |
+       v
 Order Stored in MongoDB
-   ↓
-View My Orders
-   ↓
-View Current Order Status
+       |
+       v
+View Order History & Status
 ```
-
----
 
 ## Admin Flow
 
 ```text
-Register Account
-      ↓
-Promote Account with make-admin
-      ↓
 Admin Login
-      ↓
-Admin Dashboard
-      ↓
+      |
+      v
+Protected Dashboard
+      |
+      v
 View Products / Orders / Revenue
-      ↓
-Manage Products
-      ↓
+      |
+      v
+Manage Products & Inventory
+      |
+      v
 Manage Customer Orders
-      ↓
+      |
+      v
 Update Order Status
 ```
 
-When an administrator updates an order status, the customer can view the updated status from the Orders page.
+Updated order statuses are reflected on the customer's Orders page.
+
+---
+
+# Responsive Design
+
+CARA has been designed and tested for multiple screen sizes.
+
+Responsive behaviour includes:
+
+- Mobile navigation
+- Responsive product grids
+- Responsive product detail pages
+- Mobile-friendly shopping cart cards
+- Responsive order history cards
+- Responsive admin dashboard
+- Mobile-friendly product management cards
+- Responsive order-management interface
+- Adaptive forms, banners, content sections, and footer layouts
+
+CSS media queries are used to adapt the interface for desktop, tablet, and mobile devices.
 
 ---
 
 # Database Collections
 
-MongoDB stores application data in collections including:
+MongoDB stores the application's data across the following main collections.
 
-## Users
+### Users
 
-Stores information such as:
+Stores:
 
 - Name
 - Email
 - Hashed password
 - Role
+- Timestamps
 
-User roles include:
+### Products
 
-```text
-user
-admin
-```
-
----
-
-## Products
-
-Stores information such as:
+Stores:
 
 - Product name
 - Category
@@ -576,56 +429,64 @@ Stores information such as:
 - Description
 - Image
 - Stock
+- Timestamps
 
----
+### Carts
 
-## Carts
+Stores:
 
-Stores customer shopping-cart data.
+- Customer reference
+- Products
+- Selected sizes
+- Quantities
 
----
+### Orders
 
-## Orders
+Stores:
 
-Stores information such as:
-
-- Customer
-- Purchased products
+- Customer reference
+- Product snapshots
 - Quantity
 - Size
+- Price
 - Total amount
 - Order status
 - Timestamps
 
 ---
 
-# Authentication and Authorization
+# Authentication & Authorization
 
 CARA uses JWT-based authentication.
 
-After successful login, the frontend stores the authentication token and sends it to protected backend routes using:
+After a successful login, the frontend sends the authentication token to protected backend routes using:
 
 ```text
 Authorization: Bearer <token>
 ```
 
-The backend verifies the token before allowing access to protected resources.
+The backend:
 
-Admin routes additionally verify that the authenticated account has the:
+1. Verifies the JWT.
+2. Retrieves the corresponding user from MongoDB.
+3. Attaches the authenticated user to the request.
+4. Allows access to protected resources.
+
+Administrative routes perform an additional role check:
 
 ```text
-admin
+role === "admin"
 ```
 
-role.
+This separates normal customer functionality from administrative operations.
 
-This prevents normal customer accounts from accessing protected admin functionality.
+Passwords are not stored in plain text. They are hashed using `bcryptjs` before being stored in MongoDB.
 
 ---
 
 # API Overview
 
-The backend provides API routes for:
+The backend is organised around the following API groups:
 
 ```text
 /api/auth
@@ -635,142 +496,107 @@ The backend provides API routes for:
 /api/admin
 ```
 
-Example endpoints include:
+Examples include:
 
 ```text
 POST /api/auth/register
 POST /api/auth/login
+GET  /api/auth/me
 
 GET  /api/products
 GET  /api/products/:id
 
 GET  /api/cart
-POST /api/cart
 
 GET  /api/orders
 
 GET  /api/admin/dashboard
-GET  /api/admin/orders
 ```
 
-Additional methods and endpoints are used for product management, cart operations, checkout, order creation, and admin order management.
+Additional POST, PUT, and DELETE endpoints handle cart management, checkout, product administration, and order management.
 
 ---
 
 # Security Notes
 
-Sensitive information is not committed to the repository.
+Sensitive configuration is stored using environment variables.
 
-The following are excluded from Git:
+Files and directories such as the following should not be committed:
 
 ```text
 .env
 node_modules/
 ```
 
-Never commit:
+Never publish:
 
-- MongoDB passwords
-- MongoDB connection strings containing credentials
+- MongoDB usernames or passwords
+- Private MongoDB connection strings
 - JWT secrets
-- Private environment variables
+- Production environment variables
+- User passwords
 
-The repository contains:
+The repository includes `.env.example` to document the required environment variables without exposing real credentials.
 
-```text
-.env.example
-```
-
-to show which environment variables are required without exposing real credentials.
-
-Each developer cloning the project should create their own `.env` file.
+Public registration cannot assign administrative privileges. User roles are controlled by the backend and administrator accounts are provisioned separately.
 
 ---
 
 # Testing
 
-The project has been tested from a fresh GitHub clone using a separate local project directory and MongoDB database.
+The application has been tested through both customer and administrative workflows.
 
-The setup flow tested included:
-
-```text
-Clone Repository
-→ npm install
-→ Create .env
-→ Connect MongoDB
-→ Seed Products
-→ Start Backend
-→ Start Frontend
-```
-
-### Customer Flow Tested
+## Customer Flow
 
 ```text
-Register New Customer
-→ Login
-→ Browse Products
-→ View Product
-→ Add to Cart
-→ Checkout
-→ Place Order
-→ View Order
+Register
+   |
+   v
+Login
+   |
+   v
+Browse Products
+   |
+   v
+View Product
+   |
+   v
+Add to Cart
+   |
+   v
+Update Cart
+   |
+   v
+Checkout
+   |
+   v
+Order Created
+   |
+   v
+View Orders
 ```
 
-### Admin Flow Tested
+## Admin Flow
 
 ```text
-Register New Account
-→ Promote Account with make-admin
-→ Login as Admin
-→ Open Dashboard
-→ View Products
-→ View Customer Orders
-→ Update Order Status
+Admin Login
+   |
+   v
+Dashboard
+   |
+   v
+Manage Products
+   |
+   v
+View Customer Orders
+   |
+   v
+Update Order Status
 ```
 
-The customer can then view the updated order status from their Orders page.
+The updated status can then be viewed from the customer's order history.
 
-Postman can optionally be used to test backend API endpoints directly, but it is not required to run the website.
-
----
-
-# Troubleshooting
-
-### Backend does not start
-
-Make sure:
-
-- `npm install` has completed successfully
-- `.env` exists inside the `backend` directory
-- `MONGO_URI` contains a valid MongoDB Atlas connection string
-- `JWT_SECRET` is defined
-- Your MongoDB Atlas network/database access is configured correctly
-
-### Products do not appear
-
-Make sure the backend is running and execute:
-
-```bash
-npm run seed
-```
-
-from the `backend` directory.
-
-### Login does not work
-
-Make sure you first registered the account and are using the same email and password used during registration.
-
-### Dashboard does not appear
-
-New accounts are normal users by default.
-
-From the backend directory, promote the registered account:
-
-```bash
-npm run make-admin -- registered-email@example.com
-```
-
-Then login using the same registered email and password.
+Postman can optionally be used for direct API testing during development.
 
 ---
 
@@ -785,7 +611,7 @@ Possible future enhancements include:
 - Customer profile management
 - Product reviews and ratings
 - Email order confirmation
-- Password reset
+- Password reset functionality
 - Cloud image storage
 - Production deployment
 
@@ -801,17 +627,4 @@ B.Tech Computer Science & Engineering
 
 ## Project Status
 
-CARA E-Commerce V2 is a functional full-stack e-commerce application with:
-
-- Customer authentication
-- JWT authorization
-- MongoDB-backed products
-- Shopping cart functionality
-- Checkout and order management
-- Customer order history
-- Role-based admin access
-- Product management
-- Customer order management
-- Admin dashboard and revenue overview
-
-The application can be cloned from GitHub and configured to run locally using the setup instructions provided above.
+**CARA E-Commerce V2 is a functional, responsive full-stack e-commerce application featuring customer authentication, MongoDB-backed product management, shopping cart and checkout functionality, order tracking, inventory management, and role-based administrative controls.**
